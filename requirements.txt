@@ -3,3 +3,4 @@ sphinx_rtd_theme
 myst-parser
 sphinx-sitemap
 sphinxcontrib-mermaid
+linkify-it-py
