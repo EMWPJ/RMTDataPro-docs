@@ -124,25 +124,37 @@ latex_engine = "xelatex"
 latex_elements = {
     "fontenc": "",
     "preamble": r"""
-\usepackage{xeCJK}
-\xeCJKsetup{
-    CJKspace=true,
-    xCJKecglue={}
-}
-% Use Noto Sans CJK for Chinese (installed via apk in Docker)
-\setCJKmainfont{Noto Sans CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\usepackage{indentfirst}
-\setlength{\parindent}{2em}
 \usepackage{iftex}
 \ifXeTeX
-  \usepackage{polyglossia}
-  \setmainlanguage{chinese}
-  \setotherlanguage{english}
+  % Load fontspec first for \newfontfamily
+  \usepackage{fontspec}
+  % Define CJK fonts for polyglossia before it loads
   \newfontfamily\cjkfont{Noto Sans CJK SC}
+  \newfontfamily\cjkfontsf{Noto Sans CJK SC}
+  \newfontfamily\cjkfonttt{Noto Sans CJK SC}
+  % Load polyglossia with explicit CJK font definitions
+  \usepackage{polyglossia}
+  \setmainlanguage[fallback=true]{chinese}
+  \setotherlanguage{english}
+  % Now load xeCJK for additional Chinese support
+  \usepackage{xeCJK}
+  \xeCJKsetup{
+      CJKspace=true,
+      xCJKecglue={}
+  }
+  \setCJKmainfont{Noto Sans CJK SC}
+\else
+  \usepackage{xeCJK}
+  \xeCJKsetup{
+      CJKspace=true,
+      xCJKecglue={}
+  }
+  \setCJKmainfont{Noto Sans CJK SC}
 \fi
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
 """,
-    "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
+    "babel": r"\usepackage{polyglossia}\setmainlanguage[fallback=true]{chinese}",
     "polyglossia_names": ["chinese"],
     "sphinxsetup": "verbatimforcewraps",
 }
