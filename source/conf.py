@@ -38,7 +38,10 @@ html_theme_options = {
     "titles_only": False,
 }
 
-html_context = {"html_lang": "zh-CN"}
+# -- Language configuration ----------------------------------------------------
+language = "zh-CN"
+
+html_copy_source = False
 
 html_baseurl = "https://emwpj.github.io/RMTDataPro-docs/"
 sitemap_url_scheme = "https"
