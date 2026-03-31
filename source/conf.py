@@ -120,12 +120,9 @@ master_doc = "index"
 # -- PDF/LaTeX configuration (xeCJK for Chinese) ------------------------------
 latex_engine = "xelatex"
 
-# Simplified LaTeX configuration - let Sphinx handle Chinese defaults
-# With language='zh-CN' and latex_engine='xelatex', Sphinx auto-configures
-# fontenc to \usepackage{xeCJK} at the correct load order
+# Simplified LaTeX configuration for Chinese-only docs
+# Use xeCJK directly without polyglossia to avoid font conflicts
 latex_elements = {
-    "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
-    "polyglossia_names": ["chinese"],
     "xeCJK": True,
     "sphinxsetup": "verbatimforcewraps",
 }
