@@ -23,7 +23,7 @@ graph LR
         A[MT<br/>0.001-1 kHz<br/>100m-100km] --> D[大地电磁法]
         B[被动源RMT<br/>1 kHz-1 MHz<br/>0-100m] --> D
         C[CSAMT<br/>1 Hz-100 kHz<br/>10m-3km] --> D
-        E[(CS)RMT<br/>1-1000 kHz<br/>2-100m] --> D
+        E[CS-RMT<br/>1-1000 kHz<br/>2-100m] --> D
     end
 ```
 
