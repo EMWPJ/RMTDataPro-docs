@@ -106,9 +106,8 @@ jobs:
 
       - name: Build DOCX
         run: |
-          # Get the main HTML file (index.html)
-          PandocIndex=$(find _build/html -name "index.html" -type f)
-          pandoc "$PandocIndex" \
+          # Use the main index.html at root (not subdirectory index files)
+          pandoc _build/html/index.html \
             --from=html+tex_math_double_backslash \
             --to=docx \
             --toc --toc-depth=3 \
