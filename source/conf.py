@@ -120,38 +120,13 @@ master_doc = "index"
 # -- PDF/LaTeX configuration (xeCJK for Chinese) ------------------------------
 latex_engine = "xelatex"
 
-# Use xeCJK for Chinese character support
+# Simplified LaTeX configuration - let Sphinx handle Chinese defaults
+# With language='zh-CN' and latex_engine='xelatex', Sphinx auto-configures
+# fontenc to \usepackage{xeCJK} at the correct load order
 latex_elements = {
-    "fontenc": "",
-    "preamble": r"""
-\usepackage{iftex}
-\ifXeTeX
-  % Load fontspec for Latin fonts
-  \usepackage{fontspec}
-  \setmainfont{FreeSerif}
-  \setsansfont{FreeSans}
-  \setmonofont{FreeMono}
-  % Define CJK font for polyglossia
-  \newfontfamily\cjkfont{Noto Sans CJK SC}
-  % Load polyglossia for language support
-  \usepackage{polyglossia}
-  \setmainlanguage{english}
-  \setotherlanguage{chinese}
-\fi
-% Load xeCJK for Chinese support
-\usepackage{xeCJK}
-\xeCJKsetup{
-    CJKspace=true,
-    xCJKecglue={}
-}
-% Set Chinese font - use Noto Sans CJK SC (installed via apk)
-\setCJKmainfont{Noto Sans CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\usepackage{indentfirst}
-\setlength{\parindent}{2em}
-""",
     "babel": r"\usepackage{polyglossia}\setmainlanguage{english}",
     "polyglossia_names": ["english"],
+    "xeCJK": True,
     "sphinxsetup": "verbatimforcewraps",
 }
 
