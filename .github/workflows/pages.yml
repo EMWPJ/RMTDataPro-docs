@@ -57,19 +57,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Install TeX Live
+      - name: Build PDF
         uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: '2025'
           scheme: 'full'
-          # Full scheme already includes latexmk, xeCJK, fontspec, ctex - no need to install
-
-      - name: Build PDF
-        run: |
-          export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH"
-          sphinx-build -b latex source _build/latexpdf
-          cd _build/latexpdf
-          latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
+          run: |
+            sphinx-build -b latex source _build/latexpdf
+            cd _build/latexpdf
+            latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
