@@ -168,6 +168,6 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: true
-          commitish: master
+          target_commitish: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
