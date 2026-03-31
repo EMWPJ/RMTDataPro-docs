@@ -169,5 +169,6 @@ jobs:
           prerelease: false
           generateReleaseNotes: true
           commit: master
+          tag: release-${{ github.run_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
