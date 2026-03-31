@@ -60,9 +60,9 @@ jobs:
       - name: Install TeX Live
         uses: xu-cheng/texlive-action@v3
         with:
-          scheme: 'small'
+          texlive_version: '2025'
+          scheme: 'full'
           run: |
-            update-tlmgr-latest.sh --update
             tlmgr install latexmk xeCJK ctex fontspec
 
       - name: Build PDF
