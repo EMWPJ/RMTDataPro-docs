@@ -121,7 +121,6 @@ master_doc = "index"
 latex_engine = "xelatex"
 
 # Use xeCJK for Chinese character support
-# Note: Don't specify font files - xeCJK auto-detects system Chinese fonts
 latex_elements = {
     "fontenc": "",
     "preamble": r"""
@@ -131,6 +130,9 @@ latex_elements = {
     xCJKecglue={},
     CJKmathspace=true
 }
+% Specify Fandol Chinese font (available in texlive Docker image)
+\setCJKmainfont{Fandol Fang}
+\setCJKsansfont{Fandol Hei}
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
 \usepackage{iftex}
