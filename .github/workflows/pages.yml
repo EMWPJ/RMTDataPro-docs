@@ -61,8 +61,9 @@ jobs:
         uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: '2024'
-          xelatex: true
-          extra_packages: 'latexmk'
+          scheme: 'medium'
+          run: |
+            tlmgr install latexmk
 
       - name: Build PDF
         run: |
