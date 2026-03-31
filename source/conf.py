@@ -38,6 +38,24 @@ html_theme_options = {
     "titles_only": False,
 }
 
+html_static_path = ["_static"]
+html_css_files = ["css/custom.css"]
+html_js_files = ["mathjax-init.js"]
+
+# -- MathJax configuration ----------------------------------------------------
+mathjax3_config = {
+    "options": {
+        "processHtmlClass": "math",
+    },
+    "tex2jax": {
+        "inlineMath": [["$", "$"], ["\\(", "\\)"]],
+        "displayMath": [["$$", "$$"], ["\\[", "\\]"]],
+    },
+    "startup": {
+        "pageReady": "MathJax.startup.promise.then(() => MathJax.typesetPromise())"
+    },
+}
+
 # -- Language configuration ----------------------------------------------------
 language = "zh-CN"
 
@@ -53,15 +71,23 @@ highlight_options = {"hl_lines": []}
 # -- MyST configuration ------------------------------------------------------
 myst_enable_extensions = [
     "amsmath",
-    "dollarmath",
+    "attrs_inline",
     "colon_fence",
     "deflist",
-    "tasklist",
+    "dollarmath",
+    "html_admonition",
+    "html_image",
     "linkify",
+    "substitution",
+    "tasklist",
 ]
+
+mermaid_version = "10.6.1"
+mermaid_init_js = 'mermaid.initialize({startOnLoad:true,theme:"neutral"});'
 
 myst_heading_anchors = 3
 myst_fence_as_directive = ["mermaid"]
+myst_url_schemes = ("http", "https", "mailto")
 
 # -- Intersphinx configuration -----------------------------------------------
 intersphinx_mapping = {

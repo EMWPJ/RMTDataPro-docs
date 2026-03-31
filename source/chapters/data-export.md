@@ -10,43 +10,53 @@
 
 ```mermaid
     graph TB
-        A[选择测点] --> B[项目 → 批量导出ρ-φ]
+        A[选择测点] --> B[项目 → 批量导出ρ-φ曲线]
         B --> C[选择导出格式]
         C --> D[EDI格式]
         C --> E[TXT格式]
         C --> F[CSV格式]
-        D --> G[设置输出目录]
-        E --> G
-        F --> G
-        G --> H[开始导出]
-        H --> I[进度显示]
-        I --> J[导出完成]
+        C --> G[SVG格式]
+        C --> H[PNG格式]
+        C --> I[PDF格式]
+        D --> J[设置输出目录]
+        E --> J
+        F --> J
+        G --> J
+        H --> J
+        I --> J
+        J --> K[开始导出]
+        K --> L[进度显示]
+        L --> M[导出完成]
 ```
 
 ### 导出格式
 
-| 格式 | 说明 | 适用场景 |
-|------|------|----------|
-| **EDI** | 标准MT数据交换格式 | 第三方软件导入 |
-| **TXT** | 文本格式，每行一条记录 | 人工查看 |
-| **CSV** | 逗号分隔值 | Excel/SPSS 分析 |
+| 格式 | 类型 | 说明 | 适用场景 |
+|------|------|------|----------|
+| **EDI** | 数据格式 | 标准MT数据交换格式 | 第三方软件导入 |
+| **TXT** | 数据格式 | 文本格式，每行一条记录 | 人工查看 |
+| **CSV** | 数据格式 | 逗号分隔值 | Excel/SPSS 分析 |
+| **SVG** | 图片格式 | 矢量图形 | 出版、编辑 |
+| **PNG** | 图片格式 | 位图格式 | 报告、网页 |
+| **PDF** | 图片格式 | 便携文档 | 打印、归档 |
+
+### TXT/CSV 格式列说明
+
+| 列名 | 单位 | 说明 |
+|------|------|------|
+| freq | Hz | 频率 |
+| rxy | Ωm | 阻抗电阻率 (xy分量) |
+| pxy | ° | 阻抗相位 (xy分量) |
+| ryx | Ωm | 阻抗电阻率 (yx分量) |
+| pyx | ° | 阻抗相位 (yx分量) |
+| rxy_err | Ωm | xy电阻率误差 |
+| pxy_err | ° | xy相位误差 |
+| ryx_err | Ωm | yx电阻率误差 |
+| pyx_err | ° | yx相位误差 |
 
 ### EDI 格式
 
-EDI（Electrical Data Interchange）是 MT 数据的标准交换格式：
-
-```bash
->=HEAD
-  FILENAME="station001.edi"
-  ACQBY="Operator"
-  DATE="2026-03-30"
-  ...
->MT DATA
->Z rot=0
-  100.0  45.2  -15.3  72.1  ...
-  200.0  48.5  -12.8  68.4  ...
->END
-```
+EDI（Electrical Data Interchange）是 MT 数据的标准交换格式，包含测点信息、阻抗数据等。
 
 ### 导出对话框
 
@@ -160,15 +170,20 @@ RMTDataPro_en_US.qm  # 英文翻译
 
 | 快捷键 | 功能 |
 |--------|------|
-| Ctrl+Shift+N | 新建工程 |
-| Ctrl+Shift+O | 打开工程 |
-| Ctrl+Shift+S | 保存工程 |
-| Ctrl+Shift+E | 批量导出 |
-| F5 | 刷新 |
-| F1 | 帮助 |
-
-详见 [附录A：键盘快捷键](../appendices/appendixA)
+| Ctrl+Shift+N | 新建工程 (New Project) |
+| Ctrl+Shift+O | 打开工程 (Open Project) |
+| Ctrl+Shift+R | 最近工程 (Recent Projects) |
+| Ctrl+Shift+S | 保存工程 (Save Project) |
+| Ctrl+Alt+Shift+S | 另存工程 (Save Project As) |
+| Ctrl+Shift+W | 关闭工程 (Close Project) |
+| Ctrl+Shift+E | 批量导出 ρ-φ (Batch Export) |
+| Ctrl+Alt+Shift+F | FFT 参数 (FFT Parameters) |
+| Ctrl+Alt+Shift+C | 校准 (Calibration) |
+| Ctrl+Alt+T | 样式设置 (Style Settings) |
+| Ctrl+Alt+S | 图表系列设置 (Chart Series Settings) |
+| Ctrl+Alt+Shift+X | 退出 (Exit) |
+| F1 | 关于 (About) |
 
 ---
 
-**下一节**: [RMT 原理](chapter6_rmt_theory)
+**下一节**: [实例展示](../gallery/index)

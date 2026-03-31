@@ -73,7 +73,7 @@ graph TB
 
 - **ρ-φ 曲线**: 视电阻率与相位随频率变化
 - **数据表格**: 详细数值输出
-- **质量指标**: 相干度、误差估计
+- **质量指标**: ρ-φ曲线连续性
 
 ### 第六步：导出数据
 
@@ -134,9 +134,9 @@ graph TB
 
 ## 📚 下一步
 
-- 深入了解 [数据导入](../chapters/chapter7)
-- 学习 [FFT 处理参数](../chapters/chapter3)
-- 掌握 [批量导出功能](../chapters/chapter5)
+- 深入了解 [数据导入](../chapters/data-import)
+- 学习 [FFT 处理参数](../chapters/fft-processing)
+- 掌握 [批量导出功能](../chapters/data-export)
 
 ---
 

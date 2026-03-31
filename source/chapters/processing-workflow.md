@@ -88,20 +88,6 @@
 采样率: 312 kHz
 ```
 
-### 信号与槽
-
-```cpp
-// 连接进度信号
-connect(processor, &RMTProcessor::progressChanged, this, &MyWidget::onProgress);
-connect(processor, &RMTProcessor::detailedProgressChanged, this, &MyWidget::onDetailedProgress);
-connect(processor, &RMTProcessor::processingFinished, this, &MyWidget::onFinished);
-
-// 信号定义
-void progressChanged(int percentage);           // 整体进度 0-100
-void detailedProgressChanged(int current, int total, double sampleRate);  // 详细进度
-void processingFinished(bool success);          // 处理完成
-```
-
 ## 📉 结果可视化
 
 ### ρ-φ 曲线
@@ -128,16 +114,15 @@ void processingFinished(bool success);          // 处理完成
 
 ## ✔️ 质量评估
 
-### 相干度
+### ρ-φ 曲线连续性评估
 
-相干度（Coherence）反映信号质量：
+数据质量通过检查 **视电阻率-相位曲线连续性** 来判断：
 
-| 相干度范围 | 质量评估 | 建议 |
-|------------|----------|------|
-| > 0.8 | 优秀 | 可直接使用 |
-| 0.5-0.8 | 良好 | 可接受 |
-| 0.3-0.5 | 一般 | 谨慎使用 |
-| < 0.3 | 较差 | 考虑重测 |
+| 曲线特征 | 质量评估 | 建议 |
+|----------|----------|------|
+| 曲线光滑，无明显跳点 | ✅ 优质 | 可直接使用 |
+| 轻微抖动，偶发跳点 | ⚠️ 可用 | 谨慎解释 |
+| 明显跳点或曲线断裂 | ❌ 问题 | 需检查原因 |
 
 ### 误差估计
 
@@ -152,33 +137,18 @@ void processingFinished(bool success);          // 处理完成
 
 在处理过程中可以取消：
 
-```cpp
-// 用户点击取消按钮
-processor->cancel();
-
-// 处理器检查取消标志并停止
-```
+- 点击取消按钮停止当前处理
+- 已完成的频段结果会保留
 
 ### 处理中断点
 
 - 频段边界可以安全中断
-- 已完成的频段结果会保留
-- 从断点恢复需要重新处理
+- 从断点恢复需要重新处理该频段
 
 ## 📤 结果保存
 
-处理结果自动关联到测点：
-
-```cpp
-// 获取处理结果
-RMTFFTResult* result = processor->getResult();
-
-// 结果包含：
-// - 各频段的阻抗张量
-// - 误差估计
-// - 处理参数副本
-```
+处理结果自动关联到测点，可随时查看和导出。
 
 ---
 
-**下一节**: [批量导出与工具](chapter5)
+**下一节**: [批量导出与工具](data-export)

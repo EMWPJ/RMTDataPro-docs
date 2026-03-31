@@ -1,51 +1,35 @@
 # RMTDataPro 文档
 
-RMTDataPro 是一款专业的射频大地电磁法（RMT）数据处理软件，基于 Qt6 开发，集成了 Intel MKL 高性能数学库。
+RMTDataPro 是一款专业的射频大地电磁法（RMT）数据处理软件。
 
 ## 📚 文档目录
 
 ```{toctree}
 :maxdepth: 2
-:numbered: 3
 
 intro/index
 intro/install
 intro/quickstart
-
-chapters/chapter1
-chapters/chapter3
-chapters/chapter4
-chapters/chapter5
-chapters/chapter6_rmt_theory
-chapters/chapter7
-
-gallery/index
-tutorial/index
-tutorial/plotting
-
-appendices/appendixA
-appendices/appendixB
-appendices/appendixC
-appendices/appendixD
-appendices/appendixE
-appendices/appendixF
-appendices/appendix_calibration
-
-appendix/contributing
+chapters/ui-reference
+chapters/chapter_rmt_theory
+chapters/data-import
+chapters/fft-processing
+chapters/processing-workflow
+chapters/data-export
 ```
 
 ## 🔗 快速链接
 
-| 入门 | 安装 | 处理流程 | 导出 |
+| 入门 | 安装 | 快速开始 | 用户操作指南 |
 |:---:|:---:|:---:|:---:|
-| [快速开始](intro/quickstart) | [安装指南](intro/install) | [数据处理](chapters/chapter3) | [批量导出](chapters/chapter5) |
+| [软件简介](intro/index) | [安装指南](intro/install) | [快速开始](intro/quickstart) | [7步操作指南](chapters/ui-reference) |
 
 ## 📖 文档索引
 
 - **入门指南**: 软件简介、安装配置、快速开始
-- **核心功能**: SBF 数据格式、FFT 处理、数据处理流程、批量导出
-- **实例教程**: 绘图教程、实例展示
-- **附录参考**: 快捷键、文件格式、参数说明、常见问题
+- **用户操作指南**: 7步完整工作流程（创建工程→导入数据→配置FFT→校准→处理→查看结果→导出）
+- **RMT原理**: 视电阻率与相位、趋肤深度、频率深度关系、数据质量评估
+- **数据处理**: 数据导入、FFT处理、工作流程、数据导出
 
 ---
 
