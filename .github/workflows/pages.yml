@@ -62,6 +62,7 @@ jobs:
         with:
           scheme: 'small'
           run: |
+            tlmgr update --self
             tlmgr install latexmk xeCJK ctex fontspec
 
       - name: Build PDF
