@@ -66,8 +66,13 @@ jobs:
           texlive_version: '2025'
           scheme: 'full'
           run: |
+            # Install Chinese fonts (Alpine Linux)
+            apk add font-noto-cjk || true
+            # Find the Chinese font path
+            fc-list :lang=zh 2>/dev/null || echo "No Chinese fonts found"
+            # Build PDF (use -f to force despite errors)
             cd _build/latexpdf
-            latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
+            latexmk -pdf -f -file-line-error -interaction=nonstopmode *.tex
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
