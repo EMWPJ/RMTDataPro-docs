@@ -127,12 +127,11 @@ latex_elements = {
 \usepackage{xeCJK}
 \xeCJKsetup{
     CJKspace=true,
-    xCJKecglue={},
-    CJKmathspace=true
+    xCJKecglue={}
 }
-% Specify Fandol Chinese font (available in texlive Docker image)
-\setCJKmainfont{Fandol Fang}
-\setCJKsansfont{Fandol Hei}
+% Use Noto Sans CJK for Chinese (installed via apk in Docker)
+\setCJKmainfont{Noto Sans CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
 \usepackage{iftex}
@@ -140,6 +139,7 @@ latex_elements = {
   \usepackage{polyglossia}
   \setmainlanguage{chinese}
   \setotherlanguage{english}
+  \newfontfamily\cjkfont{Noto Sans CJK SC}
 \fi
 """,
     "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
