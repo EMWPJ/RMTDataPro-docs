@@ -61,7 +61,7 @@ jobs:
         uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: '2024'
-          scheme: 'medium'
+          scheme: 'full'
           run: |
             tlmgr install latexmk
 
