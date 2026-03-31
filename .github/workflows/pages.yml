@@ -162,12 +162,12 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          files: |
+          artifacts: |
             artifacts/*.pdf
             artifacts/*.docx
           draft: false
           prerelease: false
-          generate_release_notes: true
+          generateReleaseNotes: true
           commit: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
