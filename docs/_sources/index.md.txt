@@ -12,9 +12,9 @@ intro/index
 intro/install
 intro/quickstart
 
+chapters/chapter_rmt_theory
 chapters/chapter1
 chapters/chapter2
-chapters/chapter_rmt_theory
 chapters/chapter3
 chapters/chapter4
 chapters/chapter5

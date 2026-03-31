@@ -1,4 +1,6 @@
 _build/
+build/
+.sphinx_test/
 *.pyc
 __pycache__/
 *.swp

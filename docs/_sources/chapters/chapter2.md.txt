@@ -1,49 +1,30 @@
-# SBF 数据格式
+# 数据导入与频段处理
 
-本章详细介绍 SBF（Station Binary Format）数据格式的结构和使用方法。
+本章介绍 RMTDataPro 中如何导入 SBF 数据文件、选择处理频段，以及进行阻抗估计的基本操作。
 
-## 📋 SBF 格式概述
+## 📂 SBF 数据导入
 
-SBF 是一种二进制数据格式，用于存储 RMT 采集站的频谱和辅助数据。与原始时间序列不同，SBF 已经过预处理，包含了频域数据。
+### 导入方式
 
-### 主要特点
+RMTDataPro 提供两种数据导入方式：
 
-- **二进制格式**: 紧凑，读取速度快
-- **多频段支持**: D1、D2、D3、D4 同时存储
-- **自描述性**: 包含头部信息和参数
-- **校验机制**: 内置校验和验证
+#### 方式一：通过菜单导入
 
-## 🏗️ SBF 文件结构
+1. 选择 **项目** → **打开工程**（或新建工程）
+2. 在工程管理面板中，选中目标测线或测点
+3. 右键点击 → **导入 SBF 文件**
+4. 在文件对话框中选择要导入的 SBF 文件
+5. 点击"打开"确认导入
 
-SBF 文件由多个数据段（Section）组成，每个段有不同的功能和格式：
+#### 方式二：通过拖拽导入
 
-```mermaid
-    graph TB
-        A[SBF文件] --> B[Header 文件头]
-        A --> C[Text Section<br/>文本段]
-        A --> D[Ini Section<br/>初始化段]
-        A --> E[Trass Section<br/>时间序列段]
-        A --> F[Spectrum Section<br/>频谱段]
-        A --> G[Device Parameter<br/>设备参数段]
-        A --> H[Registrar Parameter<br/>注册参数段]
-        A --> I[CheckSum Section<br/>校验段]
-```
+1. 打开工程并选中目标测线
+2. 直接将 SBF 文件拖拽到工程管理面板
+3. 软件自动识别并导入文件
 
-### 各段说明
+### 支持的频段
 
-| Section | 类型 | 说明 |
-|---------|------|------|
-| **Text** | 文本 | 注释、测点信息 |
-| **Ini** | 参数 | 初始化参数配置 |
-| **Trass** | 时间序列 | 原始时间序列数据 |
-| **Spectrum** | 频谱 | 预计算的频谱数据 |
-| **Device Parameter** | 参数 | 采集设备参数 |
-| **Registrar Parameter** | 参数 | 注册相关参数 |
-| **CheckSum** | 校验 | 数据完整性校验 |
-
-## 📡 频段（D1-D4）
-
-SBF 支持四个频段，每个频段对应不同的采样率和频率范围：
+SBF 数据包含四个频段，不同频段适用于不同的探测深度：
 
 | 频段 | 采样率 | 频率范围 | 典型应用 |
 |------|--------|----------|----------|
@@ -54,140 +35,89 @@ SBF 支持四个频段，每个频段对应不同的采样率和频率范围：
 
 > **注意**: D4 频段在 M 模式下为 2496 kHz，在 L 模式下为 1248 kHz。
 
-### 频段采样率常量
+### 导入后检查
 
-```cpp
-// SBFBandsSampleRate 数组定义
-const double SBFBandsSampleRate[] = { 39000, 312000, 832000, 2496000 };
-const QString SBFBandsName[] = { "D1", "D2", "D3", "D4" };
-```
+导入完成后，在测点下会显示对应的频段数据：
 
-## 🔄 SBF 文件加载
+- ✅ D1 - 39kHz
+- ✅ D2 - 312kHz  
+- ✅ D3 - 832kHz
+- ✅ D4 - 2496kHz
 
-### 基本加载流程
+如果某个频段显示为 ❌ 或缺失，说明该 SBF 文件不包含该频段数据。
 
-```mermaid
-    graph LR
-        A[选择SBF文件] --> B[打开文件流]
-        B --> C[读取文件头]
-        C --> D[解析各数据段]
-        D --> E{解析成功?}
-        E --> |是| F[加载数据到测点]
-        E --> |否| G[显示错误信息]
-```
+## 📡 频段选择与处理
 
-### 代码示例
+### 选择目标频段
 
-```cpp
-// 创建 SBFSite 对象
-SBFSite* site = new SBFSite();
+在数据处理窗口中：
 
-// 加载 SBF 文件
-bool success = site->load("path/to/data.sbf");
+1. 展开测点节点，显示所有可用频段
+2. 勾选要处理的频段（可多选）
+3. 常用做法是先处理 D3 或 D4 频段进行浅层探测
 
-if (success) {
-    // 获取加载的 SBF 对象数量
-    int count = site->sbfTrassCount();
-    
-    // 获取特定频段的时间序列数据
-    MultiChannelTimeSeries* ts = site->getTSData(SBFBands::D1);
-}
-```
+### 频段处理参数
 
-## 🔍 SBF 数据访问
+| 参数 | 说明 | 推荐值 |
+|------|------|--------|
+| **窗口长度** | FFT 分析的窗口大小 | 512-1024 |
+| **重叠率** | 窗口重叠百分比 | 0.5-0.75 |
+| **时间带宽积** | MTSM 多窗口参数 | 2.0-4.0 |
 
-### 获取 SBF 对象
+## 🔄 阻抗估计模式
 
-```cpp
-// 获取所有 Trass Section
-for (int i = 0; i < site->sbfTrassCount(); ++i) {
-    SBFTrassSection* trass = site->getSBFTrass(i);
-    // 处理时间序列数据
-}
+RMTDataPro 支持两种阻抗估计模式：
 
-// 获取注册参数
-SBFRegistrarParameterSection* regParam = site->registrarParameterSection();
-```
+### 标量阻抗（Scalar Impedance）
 
-### 获取时间序列数据
+- **适用场景**: 探测区域电性结构较为均匀、二维特征不明显
+- **优点**: 计算简单、抗干扰能力较强
+- **配置**: 在参数配置中选择"标量阻抗"模式
 
-```cpp
-// 按频段获取时间序列
-MultiChannelTimeSeries* d1Data = site->getTSData(SBFBands::D1);
-MultiChannelTimeSeries* d2Data = site->getTSData(SBFBands::D2);
-MultiChannelTimeSeries* d3Data = site->getTSData(SBFBands::D3);
-MultiChannelTimeSeries* d4Data = site->getTSData(SBFBands::D4);
-```
+### 张量阻抗（Tensor Impedance）
 
-## 🗂️ 多 SBF 文件管理
+- **适用场景**: 探测区域存在明显二维/三维电性特征
+- **优点**: 可揭示地电结构的走向特征
+- **配置**: 在参数配置中选择"张量阻抗"模式
 
-一个测点可以包含多个 SBF 文件，这在长时间采集或多次采集时很常见：
+### 选择建议
 
-```cpp
-// 添加额外的 SBF 文件到现有测点
-site->addSBF("path/to/additional_file.sbf");
+| 场景 | 推荐模式 |
+|------|----------|
+| 初步勘探、快速筛选 | 标量阻抗 |
+| 复杂地电结构 | 张量阻抗 |
+| 均匀地层 | 标量阻抗 |
+| 断裂带、构造区域 | 张量阻抗 |
 
-// 删除特定 SBF 文件
-site->deleteSBFTrass(index);
+## 📊 数据质量检查
 
-// 清除所有 SBF 数据
-site->clear();
-```
+### 相干度阈值
 
-## 🔗 SBF 与测点数据模型
+处理结果的质量可通过相干度（γ²）判断：
 
-```mermaid
-    graph TB
-        subgraph QEMSite
-            A[测点信息] --> B[SBFSite]
-            B --> C[SBF对象列表]
-            C --> D[Trass Section 1]
-            C --> E[Trass Section 2]
-            C --> F[Trass Section N]
-        end
-        
-        subgraph 数据类型
-            G[时间序列] --> H[频谱]
-            H --> I[设备参数]
-            I --> J[注册参数]
-        end
-```
+| 相干度 γ² | 数据质量 | 是否可用 |
+|-----------|----------|----------|
+| > 0.8 | 优质 | ✅ 可用于解释 |
+| 0.5 - 0.8 | 良好 | ✅ 可用 |
+| 0.3 - 0.5 | 一般 | ⚠️ 谨慎使用 |
+| < 0.3 | 较差 | ❌ 不建议使用 |
 
-## ⚙️ SBF 版本
+### 检查步骤
 
-SBF 格式有不同的版本，通过 `SBFVersion` 枚举标识：
-
-| 版本 | 说明 |
-|------|------|
-| `Version1` | 初始版本 |
-| `Version2` | 增加新字段 |
-| `Version3` | 最新版本 |
-
-版本信息用于兼容处理和数据解析：
-
-```cpp
-site->setVersion(SBFVersion::Version3);
-SBFVersion ver = site->version();
-```
-
-## 📤 SBF 数据导出
-
-SBF 数据可以保存为文件：
-
-```cpp
-// 保存 SBF 数据到文件
-site->save("path/to/output.sbf");
-```
+1. 处理完成后，查看结果显示窗口
+2. 观察 ρ-φ 曲线的平滑程度
+3. 标记相干度较低的测点
+4. 必要时重新采集或更换测点位置
 
 ## ❓ 常见问题
 
 | 问题 | 原因 | 解决方法 |
 |------|------|----------|
-| 加载失败 | 文件损坏 | 验证文件完整性 |
-| 频段缺失 | 采集时未启用 | 检查设备配置 |
-| 数据异常 | 采样率不匹配 | 确认频段设置 |
-| 版本不兼容 | SBF 版本过旧 | 更新软件版本 |
+| 无法导入文件 | 文件格式不正确或损坏 | 确认文件为 SBF 格式，验证完整性 |
+| 频段显示缺失 | 采集时未启用该频段 | 检查设备配置或使用其他 SBF 文件 |
+| 数据曲线异常 | 采样率不匹配或噪声干扰 | 调整参数或重新处理 |
+| 处理速度慢 | 参数设置过大 | 减少窗口长度或降低重叠率 |
 
 ---
 
-**下一节**: [FFT 处理](chapter3)
+**下一节**: [FFT 处理参数配置](chapter3)
