@@ -57,13 +57,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build PDF
+      - name: Build LaTeX
+        run: sphinx-build -b latex source _build/latexpdf
+
+      - name: Build PDF with XeLaTeX
         uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: '2025'
           scheme: 'full'
           run: |
-            sphinx-build -b latex source _build/latexpdf
             cd _build/latexpdf
             latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
 
