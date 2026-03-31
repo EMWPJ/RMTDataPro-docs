@@ -20,6 +20,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
     "sphinxcontrib.mermaid",
+    "sphinx.ext.autosectionlabel",
 ]
 
 templates_path = ["_templates"]
@@ -115,3 +116,34 @@ source_suffix = ".md"
 
 # -- The master toctree document -------------------------------------------
 master_doc = "index"
+
+# -- PDF/LaTeX configuration (xeCJK for Chinese) ------------------------------
+latex_engine = "xelatex"
+
+# Use xeCJK for Chinese character support
+latex_elements = {
+    "fontenc": "",
+    "fontpkg": r"""
+\usepackage{fontspec}
+\setmainfont{NotoSerifCJKsc-Regular.ttf}[]
+\setsansfont{NotoSansCJKsc-Regular.ttf}[]
+\setmonofont{NotoSansMonoCJKsc-Regular.ttf}[]
+""",
+    "preamble": r"""
+\usepackage{xeCJK}
+\xeCJKsetup{
+    CJKspace=true,
+    xCJKecglue={}
+}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+""",
+    "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
+    "polyglossia_names": ["chinese"],
+    "sphinxsetup": "verbatimforcewraps",
+}
+
+# PDF metadata
+pdf_documents = [
+    ("index", "RMTDataPro文档", "Wang Peijie", "RMTDataPro Documentation"),
+]

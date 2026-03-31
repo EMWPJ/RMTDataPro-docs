@@ -1,4 +1,4 @@
-name: Sphinx build and deploy
+name: Documentation Build and Release
 
 on:
   push:
@@ -6,16 +6,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "docs-build"
   cancel-in-progress: false
 
 jobs:
-  build:
+  # ------------------------------------------------------------------
+  # Job 1: Build HTML for GitHub Pages
+  # ------------------------------------------------------------------
+  build-html:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,25 +30,137 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Build Sphinx
-        run: |
-          sphinx-build -b html source _build/html
+      - name: Build HTML
+        run: sphinx-build -b html source _build/html
 
-      - name: Upload artifact
+      - name: Upload HTML artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _build/html
 
-  deploy:
+  # ------------------------------------------------------------------
+  # Job 2: Build PDF using XeLaTeX
+  # ------------------------------------------------------------------
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install TeX Live
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: '2024'
+          xelatex: true
+          extra_packages: 'latexmk'
+
+      - name: Build PDF
+        run: |
+          sphinx-build -b latex source _build/latexpdf
+          cd _build/latexpdf
+          latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RMTDataPro-PDF
+          path: _build/latexpdf/*.pdf
+
+  # ------------------------------------------------------------------
+  # Job 3: Build DOCX using Pandoc
+  # ------------------------------------------------------------------
+  build-docx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pandoc
+        run: |
+          apt-get update && apt-get install -y pandoc
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build HTML
+        run: sphinx-build -b html source _build/html
+
+      - name: Build DOCX
+        run: |
+          # Get the main HTML file (index.html)
+          PandocIndex=$(find _build/html -name "index.html" -type f)
+          pandoc "$PandocIndex" \
+            --from=html+tex_math_double_backslash \
+            --to=docx \
+            --toc --toc-depth=3 \
+            --resource-path=_build/html \
+            --output=_build/RMTDataPro文档.docx
+
+      - name: Upload DOCX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RMTDataPro-DOCX
+          path: _build/RMTDataPro文档.docx
+
+  # ------------------------------------------------------------------
+  # Job 4: Deploy HTML to GitHub Pages
+  # ------------------------------------------------------------------
+  deploy-pages:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-html
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # ------------------------------------------------------------------
+  # Job 5: Create GitHub Release with PDF and DOCX
+  # ------------------------------------------------------------------
+  create-release:
+    needs: [build-pdf, build-docx]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: RMTDataPro-PDF
+          path: artifacts
+
+      - name: Download DOCX artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: RMTDataPro-DOCX
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/*.pdf
+            artifacts/*.docx
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          commitish: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
