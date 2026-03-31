@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5. 软件概述 &mdash; RMTDataPro 0.1.0 documentation</title>
+  <title>4. 软件概述 &mdash; RMTDataPro 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
@@ -455,8 +455,8 @@ window.runMermaid = runMermaid;</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. 数据导入" href="chapter2.html" />
-    <link rel="prev" title="4. 快速开始" href="../intro/quickstart.html" /> 
+    <link rel="next" title="5. FFT 处理" href="chapter3.html" />
+    <link rel="prev" title="3. 快速开始" href="../intro/quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -479,56 +479,56 @@ window.runMermaid = runMermaid;</script>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">1. RMT 原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">2. 软件简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">3. 安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">4. 快速开始</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. 软件概述</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">5.1. 操作流程</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">5.1.1. 各步骤详解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. 软件概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">4.1. 操作流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.1. 各步骤详解</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">5.2. 🏗️ 数据层级结构</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#project">5.2.1. 工程（Project）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#line">5.2.2. 测线（Line）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#site">5.2.3. 测点（Site）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4.2. 🏗️ 数据层级结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#project">4.2.1. 工程（Project）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line">4.2.2. 测线（Line）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#site">4.2.3. 测点（Site）</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">5.3. 📂 数据导入</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">5.3.1. 支持的数据格式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">5.3.2. 导入步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.3. 📂 数据导入</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.3.1. 支持的数据格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.3.2. 导入步骤</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">5.4. 🔧 标定管理</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">5.4.1. 校准功能</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">5.4.2. 校准流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">4.4. 🔧 标定管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4.4.1. 校准功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">4.4.2. 校准流程</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#fft">5.5. ⚙️ FFT 参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">5.5.1. 配置内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">5.5.2. 阻抗类型选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fft">4.5. ⚙️ FFT 参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">4.5.1. 配置内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">4.5.2. 阻抗类型选择</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">5.6. 📊 FFT 处理</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">5.6.1. 处理步骤</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">5.6.2. 质量评估</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">4.6. 📊 FFT 处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">4.6.1. 处理步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">4.6.2. 质量评估</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">5.7. 📤 结果导出</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id17">5.7.1. 导出格式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">5.7.2. 批量导出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">4.7. 📤 结果导出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">4.7.1. 导出格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">4.7.2. 批量导出</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id19">5.8. 🖥️ 界面布局</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id20">5.8.1. 菜单栏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">4.8. 🖥️ 界面布局</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">4.8.1. 菜单栏</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">6. 数据导入</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">7. FFT 处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">8. 数据处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">5. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">6. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">7. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6_rmt_theory.html">8. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">9. 数据导入</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
@@ -556,7 +556,7 @@ window.runMermaid = runMermaid;</script>
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5. </span>软件概述</li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>软件概述</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -566,10 +566,10 @@ window.runMermaid = runMermaid;</script>
            <div itemprop="articleBody">
              
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">5. </span>软件概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<h1><span class="section-number">4. </span>软件概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>本章介绍 RMTDataPro 的整体架构和操作流程。</p>
 <section id="id2">
-<h2><span class="section-number">5.1. </span>操作流程<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>操作流程<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>RMTDataPro 采用简洁的五步操作流程：</p>
 <object data="../_images/mermaid-785e6eb5e7cf0fd9065304ce994aaee7a0b486db.svg" type="image/svg+xml">
             <p class="warning">graph LR
@@ -578,7 +578,7 @@ window.runMermaid = runMermaid;</script>
     C --&gt; D[📊 FFT处理]
     D --&gt; E[📤 结果导出]</p></object>
 <section id="id3">
-<h3><span class="section-number">5.1.1. </span>各步骤详解<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.1.1. </span>各步骤详解<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>步骤</p></th>
@@ -612,7 +612,7 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id4">
-<h2><span class="section-number">5.2. </span>🏗️ 数据层级结构<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>🏗️ 数据层级结构<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>RMTDataPro 采用层级化的数据组织方式：</p>
 <object data="../_images/mermaid-7ea74a5efd6268d64b147786a8548cb0320cbe74.svg" type="image/svg+xml">
             <p class="warning">graph TB
@@ -624,7 +624,7 @@ window.runMermaid = runMermaid;</script>
     D --&gt; G[D3频段 832kHz]
     D --&gt; H[D4频段 2496kHz]</p></object>
 <section id="project">
-<h3><span class="section-number">5.2.1. </span>工程（Project）<a class="headerlink" href="#project" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.1. </span>工程（Project）<a class="headerlink" href="#project" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>最高层级数据容器</p></li>
 <li><p>包含全局参数和所有测线</p></li>
@@ -632,7 +632,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </section>
 <section id="line">
-<h3><span class="section-number">5.2.2. </span>测线（Line）<a class="headerlink" href="#line" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.2. </span>测线（Line）<a class="headerlink" href="#line" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>同一测线上的测点集合</p></li>
 <li><p>便于批量操作和线号管理</p></li>
@@ -640,7 +640,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </section>
 <section id="site">
-<h3><span class="section-number">5.2.3. </span>测点（Site）<a class="headerlink" href="#site" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.3. </span>测点（Site）<a class="headerlink" href="#site" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>独立的数据采集站</p></li>
 <li><p>包含多个 SBF 文件和频段数据</p></li>
@@ -649,9 +649,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">5.3. </span>📂 数据导入<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>📂 数据导入<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <section id="id6">
-<h3><span class="section-number">5.3.1. </span>支持的数据格式<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.3.1. </span>支持的数据格式<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>RMTDataPro 支持 SBF（Station Binary Format）格式的频谱数据文件导入：</p>
 <table class="docutils align-default">
 <thead>
@@ -686,7 +686,7 @@ window.runMermaid = runMermaid;</script>
 </table>
 </section>
 <section id="id7">
-<h3><span class="section-number">5.3.2. </span>导入步骤<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.3.2. </span>导入步骤<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p><strong>新建工程</strong>: 选择”项目”菜单 → “新建工程”</p></li>
 <li><p><strong>创建测线</strong>: 在工程管理面板右键 → “新建测线”</p></li>
@@ -700,9 +700,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">5.4. </span>🔧 标定管理<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>🔧 标定管理<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <section id="id9">
-<h3><span class="section-number">5.4.1. </span>校准功能<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.4.1. </span>校准功能<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>系统校准是确保数据质量的关键步骤。RMTDataPro 提供完善的校准管理功能：</p>
 <ul class="simple">
 <li><p><strong>校准参数加载</strong>: 自动加载系统校准文件</p></li>
@@ -711,7 +711,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </section>
 <section id="id10">
-<h3><span class="section-number">5.4.2. </span>校准流程<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.4.2. </span>校准流程<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>选择 <strong>设置</strong> → <strong>校准管理</strong></p></li>
 <li><p>选择对应的校准文件</p></li>
@@ -721,9 +721,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="fft">
-<h2><span class="section-number">5.5. </span>⚙️ FFT 参数配置<a class="headerlink" href="#fft" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.5. </span>⚙️ FFT 参数配置<a class="headerlink" href="#fft" title="Link to this heading"></a></h2>
 <section id="id11">
-<h3><span class="section-number">5.5.1. </span>配置内容<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.5.1. </span>配置内容<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <p>通过 <strong>设置</strong> → <strong>FFT参数</strong> 菜单打开配置对话框：</p>
 <table class="docutils align-default">
 <thead>
@@ -753,7 +753,7 @@ window.runMermaid = runMermaid;</script>
 </table>
 </section>
 <section id="id12">
-<h3><span class="section-number">5.5.2. </span>阻抗类型选择<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.5.2. </span>阻抗类型选择<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>类型</p></th>
@@ -775,9 +775,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id13">
-<h2><span class="section-number">5.6. </span>📊 FFT 处理<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.6. </span>📊 FFT 处理<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
 <section id="id14">
-<h3><span class="section-number">5.6.1. </span>处理步骤<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.6.1. </span>处理步骤<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p><strong>选择测点</strong>: 在工程管理面板选择要处理的测点</p></li>
 <li><p><strong>选择频段</strong>: 勾选要处理的频段（D1-D4）</p></li>
@@ -787,7 +787,7 @@ window.runMermaid = runMermaid;</script>
 </ol>
 </section>
 <section id="id15">
-<h3><span class="section-number">5.6.2. </span>质量评估<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.6.2. </span>质量评估<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
 <p>处理结果通过相干度（γ²）评估质量：</p>
 <table class="docutils align-default">
 <thead>
@@ -818,9 +818,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id16">
-<h2><span class="section-number">5.7. </span>📤 结果导出<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.7. </span>📤 结果导出<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
 <section id="id17">
-<h3><span class="section-number">5.7.1. </span>导出格式<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.7.1. </span>导出格式<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>EDI 格式</strong>: 标准 MT 数据交换格式</p></li>
 <li><p><strong>文本格式</strong>: CSV/TXT 格式，便于第三方软件读取</p></li>
@@ -828,7 +828,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </section>
 <section id="id18">
-<h3><span class="section-number">5.7.2. </span>批量导出<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.7.2. </span>批量导出<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <p>支持多测点批量导出：</p>
 <ol class="arabic simple">
 <li><p>选择 <strong>项目</strong> → <strong>批量导出</strong></p></li>
@@ -839,7 +839,7 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id19">
-<h2><span class="section-number">5.8. </span>🖥️ 界面布局<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.8. </span>🖥️ 界面布局<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
 <object data="../_images/mermaid-9e56a63dc702920f66e40d660cafd96594f38788.svg" type="image/svg+xml">
             <p class="warning">graph TB
     subgraph 主窗口布局
@@ -855,7 +855,7 @@ window.runMermaid = runMermaid;</script>
         F --&gt; L[数据表格]
     end</p></object>
 <section id="id20">
-<h3><span class="section-number">5.8.1. </span>菜单栏<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.8.1. </span>菜单栏<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>菜单</p></th>
@@ -875,7 +875,7 @@ window.runMermaid = runMermaid;</script>
 </tbody>
 </table>
 <hr class="docutils" />
-<p><strong>下一节</strong>: <a class="reference internal" href="chapter_rmt_theory.html"><span class="doc std std-doc">RMT 方法原理</span></a></p>
+<p><strong>下一节</strong>: <a class="reference internal" href="chapter3.html"><span class="doc std std-doc">FFT 参数配置与处理</span></a></p>
 </section>
 </section>
 </section>
@@ -884,8 +884,8 @@ window.runMermaid = runMermaid;</script>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../intro/quickstart.html" class="btn btn-neutral float-left" title="4. 快速开始" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="chapter2.html" class="btn btn-neutral float-right" title="6. 数据导入" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../intro/quickstart.html" class="btn btn-neutral float-left" title="3. 快速开始" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter3.html" class="btn btn-neutral float-right" title="5. FFT 处理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

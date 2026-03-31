@@ -171,4 +171,4 @@ RMTDataPro_en_US.qm  # 英文翻译
 
 ---
 
-**返回**: [软件概述](chapter1)
+**下一节**: [RMT 原理](chapter6_rmt_theory)

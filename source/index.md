@@ -8,16 +8,16 @@ RMTDataPro 是一款专业的射频大地电磁法（RMT）数据处理软件，
 :maxdepth: 2
 :numbered: 3
 
-chapters/chapter_rmt_theory
 intro/index
 intro/install
 intro/quickstart
 
 chapters/chapter1
-chapters/chapter2
 chapters/chapter3
 chapters/chapter4
 chapters/chapter5
+chapters/chapter6_rmt_theory
+chapters/chapter7
 
 gallery/index
 tutorial/index

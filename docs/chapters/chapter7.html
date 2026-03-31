@@ -6,19 +6,17 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. 软件简介 &mdash; RMTDataPro 0.1.0 documentation</title>
+  <title>9. 数据导入 &mdash; RMTDataPro 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
-    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/intro/index.html" />
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/chapters/chapter7.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=ebab40fa"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
       <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
 
 
@@ -457,8 +455,8 @@ window.runMermaid = runMermaid;</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. 安装指南" href="install.html" />
-    <link rel="prev" title="RMTDataPro 文档" href="../index.html" /> 
+    <link rel="next" title="10. 实例展示" href="../gallery/index.html" />
+    <link rel="prev" title="8. RMT 原理" href="chapter6_rmt_theory.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -481,41 +479,38 @@ window.runMermaid = runMermaid;</script>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 软件简介</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rmt">1.1. 什么是 RMT？</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">1.1.1. 技术参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">1.1.2. RMT 与其他电磁方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">1.1.3. 基本原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">5. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">6. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">7. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6_rmt_theory.html">8. RMT 原理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. 数据导入</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">9.1. 📂 数据格式简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sbf">9.1.1. SBF 格式（频谱格式）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tr">9.1.2. TR 格式（时间序列格式）</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">1.2. 主要功能</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">1.2.1. 1. 📂 项目管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sbf">1.2.2. 2. 📊 SBF 数据支持</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fft">1.2.3. 3. ⚙️ FFT 参数配置</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">1.2.4. 4. 📈 结果可视化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">1.2.5. 5. 📤 批量导出</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">1.2.6. 6. 🔧 校准功能</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">1.2.7. 7. 🌍 多语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">9.2. 📥 数据导入操作</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">9.2.1. SBF 文件导入</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">通过菜单导入</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">通过拖拽导入</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">1.3. 系统界面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">1.4. 操作流程</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">1.4.1. 各步骤说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">9.2.2. TR 文件导入</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">1.5. 版本信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">1.6. RMT 方法背景</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">1.7. 技术架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">9.3. 🗂️ 工程管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">9.3.1. 创建测线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">9.3.2. 创建测点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">9.3.3. 组织结构</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">2. 安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">3. 快速开始</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter1.html">4. 软件概述</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter3.html">5. FFT 处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4.html">6. 数据处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5.html">7. 批量导出与工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter6_rmt_theory.html">8. RMT 原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter7.html">9. 数据导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">9.4. ❓ 常见问题</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
@@ -543,7 +538,7 @@ window.runMermaid = runMermaid;</script>
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">1. </span>软件简介</li>
+      <li class="breadcrumb-item active"><span class="section-number">9. </span>数据导入</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -553,207 +548,166 @@ window.runMermaid = runMermaid;</script>
            <div itemprop="articleBody">
              
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">1. </span>软件简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>RMTDataPro 是一款专业的 <strong>射频大地电磁法（Radio Magnetotellurics, RMT）</strong> 数据处理软件。</p>
-<section id="rmt">
-<h2><span class="section-number">1.1. </span>什么是 RMT？<a class="headerlink" href="#rmt" title="Link to this heading"></a></h2>
-<p>RMT（射频大地电磁法，Radio Magnetotellurics）是一种被动源电磁探测技术，通过采集高频段（1 kHz – 1 MHz）的天然电磁场信号来研究浅层地下电性结构。</p>
+<h1><span class="section-number">9. </span>数据导入<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本章介绍如何将外业采集的 RMT 数据导入 RMTDataPro 工程，包括 SBF 格式和 TR 格式数据的导入方法。</p>
 <section id="id2">
-<h3><span class="section-number">1.1.1. </span>技术参数<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<h2><span class="section-number">9.1. </span>📂 数据格式简介<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>RMTDataPro 支持两种常用的数据格式：</p>
+<section id="sbf">
+<h3><span class="section-number">9.1.1. </span>SBF 格式（频谱格式）<a class="headerlink" href="#sbf" title="Link to this heading"></a></h3>
+<p>SBF（Station Binary Format）是 RMT 野外采集的频谱数据格式，包含预先计算的频谱信息。</p>
+<p><strong>特点</strong>：</p>
+<ul class="simple">
+<li><p>二进制格式，文件体积小</p></li>
+<li><p>已包含 FFT 频谱数据</p></li>
+<li><p>支持多频段（D1/D2/D3/D4）</p></li>
+</ul>
+<p><strong>支持的频段</strong>：</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>参数</p></th>
-<th class="head"><p>数值</p></th>
-<th class="head"><p>说明</p></th>
+<tr class="row-odd"><th class="head"><p>频段</p></th>
+<th class="head"><p>采样率</p></th>
+<th class="head"><p>频率范围</p></th>
+<th class="head"><p>典型应用</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>频率范围</strong></p></td>
-<td><p>1 kHz – 1 MHz</p></td>
-<td><p>典型工作频段 10-250 kHz</p></td>
+<tr class="row-even"><td><p><strong>D1</strong></p></td>
+<td><p>39 kHz</p></td>
+<td><p>~19.5 kHz</p></td>
+<td><p>深部地质探测</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>探测深度</strong></p></td>
-<td><p>0-100 米</p></td>
-<td><p>取决于频率和地层电阻率</p></td>
+<tr class="row-odd"><td><p><strong>D2</strong></p></td>
+<td><p>312 kHz</p></td>
+<td><p>~156 kHz</p></td>
+<td><p>中等深度</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>信号来源</strong></p></td>
-<td><p>天然电磁场</p></td>
-<td><p>VLF发射台、无线电、电力线</p></td>
+<tr class="row-even"><td><p><strong>D3</strong></p></td>
+<td><p>832 kHz</p></td>
+<td><p>~416 kHz</p></td>
+<td><p>浅部勘探</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>分辨率</strong></p></td>
-<td><p>高</p></td>
-<td><p>适用于浅层目标探测</p></td>
+<tr class="row-odd"><td><p><strong>D4</strong></p></td>
+<td><p>2496 kHz</p></td>
+<td><p>~1248 kHz</p></td>
+<td><p>近地表/工程探测</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h3><span class="section-number">1.1.2. </span>RMT 与其他电磁方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<object data="../_images/mermaid-01b1bcd28a32ba3dbaab81cc079b8a4b2f726059.svg" type="image/svg+xml">
-            <p class="warning">graph LR
-    subgraph 电磁法分类
-        A[MT&lt;br/&gt;0.001-1 kHz&lt;br/&gt;100m-100km] --&gt; D[大地电磁法]
-        B[RMT&lt;br/&gt;1 kHz-1 MHz&lt;br/&gt;0-100m] --&gt; D
-        C[CSAMT&lt;br/&gt;1 Hz-100 kHz&lt;br/&gt;10m-3km] --&gt; D
-    end</p></object>
+<section id="tr">
+<h3><span class="section-number">9.1.2. </span>TR 格式（时间序列格式）<a class="headerlink" href="#tr" title="Link to this heading"></a></h3>
+<p>TR 格式是原始的时间序列数据格式，包含未处理的电磁场时间序列。</p>
+<p><strong>特点</strong>：</p>
+<ul class="simple">
+<li><p>文本或二进制格式</p></li>
+<li><p>需要软件进行 FFT 处理</p></li>
+<li><p>保留完整原始数据信息</p></li>
+</ul>
 </section>
+</section>
+<section id="id3">
+<h2><span class="section-number">9.2. </span>📥 数据导入操作<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <section id="id4">
-<h3><span class="section-number">1.1.3. </span>基本原理<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<p>RMT 方法基于以下物理原理：</p>
+<h3><span class="section-number">9.2.1. </span>SBF 文件导入<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id5">
+<h4>通过菜单导入<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
-<li><p><strong>天然电磁场</strong>: 地球天然存在宽频带的电磁场信号</p></li>
-<li><p><strong>趋肤效应</strong>: 高频信号主要反映浅层电性结构</p></li>
-<li><p><strong>阻抗响应</strong>: 地下电性结构对电磁场的响应可用阻抗表征</p></li>
+<li><p>选择 <strong>项目</strong> → <strong>新建工程</strong>（或打开已有工程）</p></li>
+<li><p>在工程管理面板中，选中目标测线</p></li>
+<li><p>右键点击 → <strong>导入 SBF 文件</strong></p></li>
+<li><p>在文件对话框中选择要导入的 SBF 文件</p></li>
+<li><p>点击”打开”确认导入</p></li>
+</ol>
+</section>
+<section id="id6">
+<h4>通过拖拽导入<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>打开工程并选中目标测线</p></li>
+<li><p>直接将 SBF 文件拖拽到工程管理面板</p></li>
+<li><p>软件自动识别并导入文件</p></li>
+</ol>
+</section>
+</section>
+<section id="id7">
+<h3><span class="section-number">9.2.2. </span>TR 文件导入<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>TR 格式文件的导入流程与 SBF 类似：</p>
+<ol class="arabic simple">
+<li><p>选择 <strong>项目</strong> → <strong>打开工程</strong></p></li>
+<li><p>选中目标测线</p></li>
+<li><p>右键 → <strong>导入 TR 文件</strong></p></li>
+<li><p>选择 TR 格式文件并确认</p></li>
 </ol>
 <blockquote>
-<div><p><strong>核心公式</strong>: 视电阻率 <span class="math notranslate nohighlight">\(\rho_a = \frac{|Z|^2}{\omega\mu}\)</span>，其中 <span class="math notranslate nohighlight">\(Z = E/H\)</span> 为阻抗</p>
+<div><p><strong>注意</strong>：TR 格式导入后，需要在 FFT 处理阶段进行频谱计算。</p>
 </div></blockquote>
 </section>
 </section>
-<section id="id5">
-<h2><span class="section-number">1.2. </span>主要功能<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<section id="id6">
-<h3><span class="section-number">1.2.1. </span>1. 📂 项目管理<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>创建、打开、保存工程</p></li>
-<li><p>测线与测点层级管理</p></li>
-<li><p>最近工程快速访问</p></li>
-</ul>
-</section>
-<section id="sbf">
-<h3><span class="section-number">1.2.2. </span>2. 📊 SBF 数据支持<a class="headerlink" href="#sbf" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>支持 SBF（Station Binary Format）格式读取</p></li>
-<li><p>多频段支持：D1（39kHz）、D2（312kHz）、D3（832kHz）、D4（2496kHz）</p></li>
-<li><p>自动识别频段与采样率</p></li>
-</ul>
-</section>
-<section id="fft">
-<h3><span class="section-number">1.2.3. </span>3. ⚙️ FFT 参数配置<a class="headerlink" href="#fft" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>可配置窗口长度、重叠率</p></li>
-<li><p>支持单窗口与多窗口（MTSM）分析</p></li>
-<li><p>张量/标量阻抗估计模式</p></li>
-</ul>
-</section>
-<section id="id7">
-<h3><span class="section-number">1.2.4. </span>4. 📈 结果可视化<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>ρ-φ 曲线显示</p></li>
-<li><p>多测点曲线叠加对比</p></li>
-<li><p>自定义图表样式</p></li>
-</ul>
-</section>
 <section id="id8">
-<h3><span class="section-number">1.2.5. </span>5. 📤 批量导出<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>批量导出 ρ-φ 曲线</p></li>
-<li><p>EDI 格式支持</p></li>
-<li><p>灵活的数据输出选项</p></li>
-</ul>
-</section>
+<h2><span class="section-number">9.3. </span>🗂️ 工程管理<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <section id="id9">
-<h3><span class="section-number">1.2.6. </span>6. 🔧 校准功能<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>系统响应校准</p></li>
-<li><p>校准参数管理</p></li>
-</ul>
+<h3><span class="section-number">9.3.1. </span>创建测线<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>在工程管理面板中右键点击工程节点</p></li>
+<li><p>选择 <strong>新建测线</strong></p></li>
+<li><p>输入测线名称</p></li>
+<li><p>测线创建完成</p></li>
+</ol>
 </section>
 <section id="id10">
-<h3><span class="section-number">1.2.7. </span>7. 🌍 多语言支持<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>中文界面</p></li>
-<li><p>英文界面</p></li>
-</ul>
-</section>
+<h3><span class="section-number">9.3.2. </span>创建测点<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>右键点击测线节点</p></li>
+<li><p>选择 <strong>新建测点</strong></p></li>
+<li><p>输入测点名称</p></li>
+<li><p>测点创建完成，可以导入数据</p></li>
+</ol>
 </section>
 <section id="id11">
-<h2><span class="section-number">1.3. </span>系统界面<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
-<object data="../_images/mermaid-6374a92b7a17c2ffd3cae6180f87ef7281d85fd1.svg" type="image/svg+xml">
+<h3><span class="section-number">9.3.3. </span>组织结构<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<object data="../_images/mermaid-dba6df177bd47855ca739e69717141baf68bea8c.svg" type="image/svg+xml">
             <p class="warning">graph TB
-    subgraph 主窗口
-        A[工程管理面板] --&gt; B[测点列表]
-        B --&gt; C[数据处理窗口]
-        C --&gt; D[结果显示窗口]
-        A --&gt; E[Z曲线多测点叠加]
-    end
-    
-    subgraph 菜单栏
-        F[项目] --&gt; A
-        G[工具] --&gt; C
-        H[设置] --&gt; E
-    end</p></object>
+    A[工程 Project] --&gt; B[测线 Line-01]
+    A --&gt; C[测线 Line-02]
+    B --&gt; D[测点 Site-A]
+    B --&gt; E[测点 Site-B]
+    C --&gt; F[测点 Site-C]
+    D --&gt; G[SBF/TR 数据]
+    E --&gt; H[SBF/TR 数据]
+    F --&gt; I[SBF/TR 数据]</p></object>
+</section>
 </section>
 <section id="id12">
-<h2><span class="section-number">1.4. </span>操作流程<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
-<p>RMTDataPro 的标准操作流程如下：</p>
-<object data="../_images/mermaid-785e6eb5e7cf0fd9065304ce994aaee7a0b486db.svg" type="image/svg+xml">
-            <p class="warning">graph LR
-    A[📂 数据导入] --&gt; B[🔧 标定管理]
-    B --&gt; C[⚙️ FFT参数配置]
-    C --&gt; D[📊 FFT处理]
-    D --&gt; E[📤 结果导出]</p></object>
-<section id="id13">
-<h3><span class="section-number">1.4.1. </span>各步骤说明<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<h2><span class="section-number">9.4. </span>❓ 常见问题<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>步骤</p></th>
-<th class="head"><p>功能</p></th>
-<th class="head"><p>说明</p></th>
+<tr class="row-odd"><th class="head"><p>问题</p></th>
+<th class="head"><p>原因</p></th>
+<th class="head"><p>解决方法</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>数据导入</strong></p></td>
-<td><p>导入 SBF 格式频谱数据</p></td>
-<td><p>支持 D1-D4 四个频段</p></td>
+<tr class="row-even"><td><p>无法导入文件</p></td>
+<td><p>文件格式不正确或损坏</p></td>
+<td><p>确认文件格式，验证完整性</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>标定管理</strong></p></td>
-<td><p>管理系统校准参数</p></td>
-<td><p>确保数据准确性</p></td>
+<tr class="row-odd"><td><p>频段显示缺失</p></td>
+<td><p>采集时未启用该频段</p></td>
+<td><p>检查设备配置或使用其他数据文件</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>FFT参数配置</strong></p></td>
-<td><p>设置处理参数</p></td>
-<td><p>窗口、重叠、阻抗类型等</p></td>
+<tr class="row-even"><td><p>拖拽导入无效</p></td>
+<td><p>未选中测线节点</p></td>
+<td><p>先选中目标测线，再拖拽文件</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>FFT处理</strong></p></td>
-<td><p>执行频谱到阻抗的转换</p></td>
-<td><p>使用 Gamble 方法</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>结果导出</strong></p></td>
-<td><p>导出处理结果</p></td>
-<td><p>支持 EDI、文本等格式</p></td>
+<tr class="row-odd"><td><p>导入速度慢</p></td>
+<td><p>文件过大或数量过多</p></td>
+<td><p>等待或分批导入</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="id14">
-<h2><span class="section-number">1.5. </span>版本信息<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
-<p><strong>当前版本</strong>: v0.1.0<br />
-<strong>发布日期</strong>: 2026年3月</p>
-</section>
-<section id="id15">
-<h2><span class="section-number">1.6. </span>RMT 方法背景<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
-<p>RMT 方法是从传统大地电磁法（MT）发展而来的高频变种，主要区别在于：</p>
-<ul class="simple">
-<li><p><strong>更高的频率范围</strong>：RMT 使用 1 kHz – 1 MHz 频段，而传统 MT 使用 0.001 Hz – 1 kHz</p></li>
-<li><p><strong>更浅的探测深度</strong>：RMT 主要探测 0-100 米深度，MT 可探测数百公里</p></li>
-<li><p><strong>更轻便的设备</strong>：由于高频信号衰减快，RMT 使用更轻量的传感器</p></li>
-<li><p><strong>更快的采集速度</strong>：RMT 可实现每天 50-70 个测点的采集速度</p></li>
-</ul>
-<p>RMT 方法在地下水勘探、工程地质、环境调查等领域有广泛应用。</p>
-</section>
-<section id="id16">
-<h2><span class="section-number">1.7. </span>技术架构<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
-<p>RMTDataPro 基于以下技术构建：</p>
-<ul class="simple">
-<li><p><strong>Qt 6.9+</strong>: 跨平台 GUI 框架</p></li>
-<li><p><strong>Intel MKL 2024.2+</strong>: 高性能数学运算</p></li>
-<li><p><strong>Eigen 3.4+</strong>: 线性代数库</p></li>
-<li><p><strong>CMake 3.16+</strong>: 构建系统</p></li>
-</ul>
 <hr class="docutils" />
-<p><strong>下一节</strong>: <a class="reference internal" href="install.html"><span class="doc std std-doc">安装指南</span></a></p>
+<p><strong>下一节</strong>: <a class="reference internal" href="../gallery/index.html"><span class="doc std std-doc">实例展示</span></a></p>
+<p><strong>上一节</strong>: <a class="reference internal" href="chapter5.html"><span class="doc std std-doc">批量导出与工具</span></a></p>
 </section>
 </section>
 
@@ -761,8 +715,8 @@ window.runMermaid = runMermaid;</script>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="RMTDataPro 文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="install.html" class="btn btn-neutral float-right" title="2. 安装指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="chapter6_rmt_theory.html" class="btn btn-neutral float-left" title="8. RMT 原理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gallery/index.html" class="btn btn-neutral float-right" title="10. 实例展示" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

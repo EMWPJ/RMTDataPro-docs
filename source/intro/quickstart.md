@@ -134,7 +134,7 @@ graph TB
 
 ## 📚 下一步
 
-- 深入了解 [SBF 数据格式](../chapters/chapter2)
+- 深入了解 [数据导入](../chapters/chapter7)
 - 学习 [FFT 处理参数](../chapters/chapter3)
 - 掌握 [批量导出功能](../chapters/chapter5)
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7. FFT 处理 &mdash; RMTDataPro 0.1.0 documentation</title>
+  <title>5. FFT 处理 &mdash; RMTDataPro 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
@@ -457,8 +457,8 @@ window.runMermaid = runMermaid;</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. 数据处理" href="chapter4.html" />
-    <link rel="prev" title="6. 数据导入" href="chapter2.html" /> 
+    <link rel="next" title="6. 数据处理" href="chapter4.html" />
+    <link rel="prev" title="4. 软件概述" href="chapter1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -481,23 +481,21 @@ window.runMermaid = runMermaid;</script>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">1. RMT 原理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">2. 软件简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">3. 安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">4. 快速开始</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">5. 软件概述</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">6. 数据导入</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. FFT 处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">7.1. ⚙️ FFT 参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">7.1.1. 基础参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">7.1.2. 时窗长度</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">7.1.3. 重叠率</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. FFT 处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">5.1. ⚙️ FFT 参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1.1. 基础参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.1.2. 时窗长度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.1.3. 重叠率</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">7.2. 🪟 窗口模式</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">7.2.1. 单窗口模式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mtsm">7.2.2. 多窗口模式（MTSM）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">7.2.3. MTSM 数学原理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">5.2. 🪟 窗口模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.2.1. 单窗口模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mtsm">5.2.2. 多窗口模式（MTSM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.2.3. MTSM 数学原理</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dpss">离散球面调和函数（DPSS）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">多窗口功率谱估计</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id9">统计特性</a></li>
@@ -505,31 +503,33 @@ window.runMermaid = runMermaid;</script>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">7.3. 📊 目标频率配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">7.3.1. 频率带宽</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">5.3. 📊 目标频率配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">5.3.1. 频率带宽</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">7.4. 🔢 阻抗估计类型</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">7.4.1. 张量阻抗</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">7.4.2. 标量阻抗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">5.4. 🔢 阻抗估计类型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">5.4.1. 张量阻抗</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">5.4.2. 标量阻抗</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">7.5. 📈 数据类型与频段启用</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sbf">7.5.1. SBF 数据类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tr">7.5.2. TR 数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">5.5. 📈 数据类型与频段启用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sbf">5.5.1. SBF 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tr">5.5.2. TR 数据类型</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">7.6. 🔧 处理流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id17">7.7. 📋 参数配置示例</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id18">7.7.1. 标准配置（推荐）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">7.7.2. 快速处理配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">5.6. 🔧 处理流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">5.7. 📋 参数配置示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">5.7.1. 标准配置（推荐）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">5.7.2. 快速处理配置</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id20">7.8. 💾 参数文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">5.8. 💾 参数文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">8. 数据处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">6. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">7. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6_rmt_theory.html">8. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">9. 数据导入</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
@@ -557,7 +557,7 @@ window.runMermaid = runMermaid;</script>
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">7. </span>FFT 处理</li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>FFT 处理</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -567,13 +567,13 @@ window.runMermaid = runMermaid;</script>
            <div itemprop="articleBody">
              
   <section class="tex2jax_ignore mathjax_ignore" id="fft">
-<h1><span class="section-number">7. </span>FFT 处理<a class="headerlink" href="#fft" title="Link to this heading"></a></h1>
+<h1><span class="section-number">5. </span>FFT 处理<a class="headerlink" href="#fft" title="Link to this heading"></a></h1>
 <p>本章详细介绍 RMTDataPro 中的 FFT 处理功能和参数配置。</p>
 <section id="id1">
-<h2><span class="section-number">7.1. </span>⚙️ FFT 参数配置<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.1. </span>⚙️ FFT 参数配置<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>FFT 参数是影响处理质量的关键配置。通过 <strong>设置 → FFT 参数</strong> 菜单打开配置对话框。</p>
 <section id="id2">
-<h3><span class="section-number">7.1.1. </span>基础参数<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.1.1. </span>基础参数<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>参数</p></th>
@@ -607,7 +607,7 @@ window.runMermaid = runMermaid;</script>
 </table>
 </section>
 <section id="id3">
-<h3><span class="section-number">7.1.2. </span>时窗长度<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.1.2. </span>时窗长度<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>时窗长度决定了频率分辨率：</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>频率分辨率 = 采样率 / 窗口长度
 </pre></div>
@@ -636,7 +636,7 @@ window.runMermaid = runMermaid;</script>
 </table>
 </section>
 <section id="id4">
-<h3><span class="section-number">7.1.3. </span>重叠率<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.1.3. </span>重叠率<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>重叠率影响统计稳定性：</p>
 <ul class="simple">
 <li><p><strong>低重叠率 (0.25-0.5)</strong>: 计算快，统计样本少</p></li>
@@ -646,9 +646,9 @@ window.runMermaid = runMermaid;</script>
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">7.2. </span>🪟 窗口模式<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.2. </span>🪟 窗口模式<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <section id="id6">
-<h3><span class="section-number">7.2.1. </span>单窗口模式<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.1. </span>单窗口模式<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>使用单个窗口进行 FFT 分析，适用于数据量较少或噪声较低的情况。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 设置为单窗口模式</span>
 <span class="n">param</span><span class="p">.</span><span class="n">setWindowMode</span><span class="p">(</span><span class="n">FFT</span><span class="o">::</span><span class="n">WindowMode</span><span class="o">::</span><span class="n">Single</span><span class="p">);</span>
@@ -657,7 +657,7 @@ window.runMermaid = runMermaid;</script>
 </div>
 </section>
 <section id="mtsm">
-<h3><span class="section-number">7.2.2. </span>多窗口模式（MTSM）<a class="headerlink" href="#mtsm" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.2. </span>多窗口模式（MTSM）<a class="headerlink" href="#mtsm" title="Link to this heading"></a></h3>
 <p>多窗口谱分析（Multiple Taper Spectral Method）使用多个正交窗口（锥度）来减少频谱泄漏：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 设置为多窗口模式</span>
 <span class="n">param</span><span class="p">.</span><span class="n">setWindowMode</span><span class="p">(</span><span class="n">FFT</span><span class="o">::</span><span class="n">WindowMode</span><span class="o">::</span><span class="n">Multiple</span><span class="p">);</span>
@@ -698,7 +698,7 @@ window.runMermaid = runMermaid;</script>
 </table>
 </section>
 <section id="id7">
-<h3><span class="section-number">7.2.3. </span>MTSM 数学原理<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.3. </span>MTSM 数学原理<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>多窗口谱分析（Multiple Taper Spectral Method, MTSM）使用多个正交窗函数（锥度）来减少频谱泄漏，提高谱估计的统计稳定性。</p>
 <section id="dpss">
 <h4>离散球面调和函数（DPSS）<a class="headerlink" href="#dpss" title="Link to this heading"></a></h4>
@@ -775,7 +775,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">7.3. </span>📊 目标频率配置<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.3. </span>📊 目标频率配置<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
 <p>每个频段可以设置独立的目标频率列表：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 配置目标频率（采样率 -&gt; 目标频率列表）</span>
 <span class="n">QMap</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">targetFreqs</span><span class="p">;</span>
@@ -789,7 +789,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </pre></div>
 </div>
 <section id="id11">
-<h3><span class="section-number">7.3.1. </span>频率带宽<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.1. </span>频率带宽<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 设置频率提取带宽（频率分辨率的倍数）</span>
 <span class="n">param</span><span class="p">.</span><span class="n">setBandwidth</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w">  </span><span class="c1">// 中心频点 ± 左右各1个bin</span>
 </pre></div>
@@ -797,9 +797,9 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </section>
 </section>
 <section id="id12">
-<h2><span class="section-number">7.4. </span>🔢 阻抗估计类型<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.4. </span>🔢 阻抗估计类型<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
 <section id="id13">
-<h3><span class="section-number">7.4.1. </span>张量阻抗<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.4.1. </span>张量阻抗<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
 <p>张量阻抗使用 Gamble 方法，同时利用水平和垂直磁场：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">param</span><span class="p">.</span><span class="n">setImpedanceType</span><span class="p">(</span><span class="n">RMTImpedanceType</span><span class="o">::</span><span class="n">Tensor</span><span class="p">);</span>
 </pre></div>
@@ -812,7 +812,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </ul>
 </section>
 <section id="id14">
-<h3><span class="section-number">7.4.2. </span>标量阻抗<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.4.2. </span>标量阻抗<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
 <p>标量阻抗只使用水平磁场分量：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">param</span><span class="p">.</span><span class="n">setImpedanceType</span><span class="p">(</span><span class="n">RMTImpedanceType</span><span class="o">::</span><span class="n">Scalar</span><span class="p">);</span>
 </pre></div>
@@ -826,10 +826,10 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">7.5. </span>📈 数据类型与频段启用<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.5. </span>📈 数据类型与频段启用<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
 <p>RMTDataPro 支持两种数据类型，每种类型有不同的频段配置：</p>
 <section id="sbf">
-<h3><span class="section-number">7.5.1. </span>SBF 数据类型<a class="headerlink" href="#sbf" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.5.1. </span>SBF 数据类型<a class="headerlink" href="#sbf" title="Link to this heading"></a></h3>
 <p>SBF 数据有 4 个频段：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">param</span><span class="p">.</span><span class="n">setDataType</span><span class="p">(</span><span class="n">RMTDataType</span><span class="o">::</span><span class="n">SBF</span><span class="p">);</span>
 
@@ -840,7 +840,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </div>
 </section>
 <section id="tr">
-<h3><span class="section-number">7.5.2. </span>TR 数据类型<a class="headerlink" href="#tr" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.5.2. </span>TR 数据类型<a class="headerlink" href="#tr" title="Link to this heading"></a></h3>
 <p>TR 数据有 3 个频段（不同的采样率配置）：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">param</span><span class="p">.</span><span class="n">setDataType</span><span class="p">(</span><span class="n">RMTDataType</span><span class="o">::</span><span class="n">TR</span><span class="p">);</span>
 
@@ -852,7 +852,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </section>
 </section>
 <section id="id16">
-<h2><span class="section-number">7.6. </span>🔧 处理流程<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.6. </span>🔧 处理流程<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
 <object data="../_images/mermaid-61512f8b42d7a4db06afc92097974bef0cb19aee.svg" type="image/svg+xml">
             <p class="warning">graph TB
         A[输入数据] --&gt; B[分窗]
@@ -873,9 +873,9 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
         E --&gt; F2</p></object>
 </section>
 <section id="id17">
-<h2><span class="section-number">7.7. </span>📋 参数配置示例<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.7. </span>📋 参数配置示例<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
 <section id="id18">
-<h3><span class="section-number">7.7.1. </span>标准配置（推荐）<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.7.1. </span>标准配置（推荐）<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;windowLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;overlap&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
@@ -890,7 +890,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">7.7.2. </span>快速处理配置<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.7.2. </span>快速处理配置<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;windowLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;overlap&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span>
@@ -904,7 +904,7 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
 </section>
 </section>
 <section id="id20">
-<h2><span class="section-number">7.8. </span>💾 参数文件<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.8. </span>💾 参数文件<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
 <p>FFT 参数可以保存为 JSON 文件：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 保存参数到文件</span>
 <span class="n">param</span><span class="p">.</span><span class="n">saveToJson</span><span class="p">(</span><span class="s">&quot;fft_params.json&quot;</span><span class="p">);</span>
@@ -923,8 +923,8 @@ S_{xx}^{(k)}(f) = X_k(f) X_k^*(f)
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="chapter2.html" class="btn btn-neutral float-left" title="6. 数据导入" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="chapter4.html" class="btn btn-neutral float-right" title="8. 数据处理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="chapter1.html" class="btn btn-neutral float-left" title="4. 软件概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter4.html" class="btn btn-neutral float-right" title="6. 数据处理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

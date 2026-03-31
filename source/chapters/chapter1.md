@@ -183,4 +183,4 @@ graph TB
 
 ---
 
-**下一节**: [RMT 方法原理](chapter_rmt_theory)
+**下一节**: [FFT 参数配置与处理](chapter3)
