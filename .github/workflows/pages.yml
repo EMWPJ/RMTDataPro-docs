@@ -66,6 +66,7 @@ jobs:
 
       - name: Build PDF
         run: |
+          export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH"
           sphinx-build -b latex source _build/latexpdf
           cd _build/latexpdf
           latexmk -pdf -file-line-error -interaction=nonstopmode *.tex
