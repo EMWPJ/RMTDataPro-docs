@@ -160,7 +160,7 @@ jobs:
           path: artifacts
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
           files: |
             artifacts/*.pdf
@@ -168,6 +168,6 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: true
-          target_commitish: master
+          commit: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
