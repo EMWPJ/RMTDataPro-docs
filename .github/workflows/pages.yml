@@ -103,15 +103,84 @@ jobs:
           pandoc --version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt beautifulsoup4
 
       - name: Build HTML
         run: sphinx-build -b html source _build/html
 
       - name: Build DOCX
         run: |
-          # Use the main index.html at root (not subdirectory index files)
-          pandoc _build/html/index.html \
+          # Merge all HTML pages into single document for full content
+          python3 << 'PYEOF'
+          import os
+          import re
+          from bs4 import BeautifulSoup
+
+          base_dir = "_build/html"
+          output_file = "_build/merged.html"
+
+          # Order of pages to include
+          pages = [
+              "intro/index.html",
+              "intro/install.html",
+              "intro/quickstart.html",
+              "chapters/ui-reference.html",
+              "chapters/chapter_rmt_theory.html",
+              "chapters/data-import.html",
+              "chapters/fft-processing.html",
+              "chapters/processing-workflow.html",
+              "chapters/data-export.html",
+          ]
+
+          # Start with index.html as base
+          with open(os.path.join(base_dir, "index.html"), "r", encoding="utf-8") as f:
+              soup = BeautifulSoup(f.read(), "html.parser")
+
+          # Remove toctree/nav elements from body to avoid duplication
+          for nav in soup.find_all("nav"):
+              nav.decompose()
+          for toc in soup.find_all("div", class_="wy-menu"):
+              toc.decompose()
+          for toctree in soup.find_all("ul", class_="toctree"):
+              toctree.decompose()
+
+          # Find main content area
+          main = soup.find("div", class_="wy-nav-content")
+          if main is None:
+              main = soup.find("main") or soup.find("div", role="main")
+
+          # Add content from each page
+          for page in pages:
+              page_path = os.path.join(base_dir, page)
+              if os.path.exists(page_path):
+                  with open(page_path, "r", encoding="utf-8") as f:
+                      page_soup = BeautifulSoup(f.read(), "html.parser")
+                  page_main = page_soup.find("div", class_="wy-nav-content") or page_soup.find("main") or page_soup.find("div", role="main")
+                  if page_main:
+                      # Add section title
+                      title = page_soup.find("title")
+                      if title:
+                          h1 = soup.new_tag("h1")
+                          h1.string = title.string
+                          main.append(h1)
+                      # Append body content (excluding nav/header/footer)
+                      for tag in page_main.find_all(["nav", "header", "footer", "script"]):
+                          tag.decompose()
+                      main.append(page_main)
+
+          # Clean up excessive whitespace
+          for tag in soup.find_all(["div", "section"]):
+              if tag.get("class") and "toctree" in " ".join(tag.get("class", [])):
+                  tag.decompose()
+
+          with open(output_file, "w", encoding="utf-8") as f:
+              f.write(str(soup))
+
+          print(f"Merged HTML written to {output_file}")
+          PYEOF
+
+          # Convert merged HTML to DOCX
+          pandoc _build/merged.html \
             --from=html+tex_math_double_backslash \
             --to=docx \
             --toc --toc-depth=3 \

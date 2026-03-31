@@ -4,3 +4,4 @@ myst-parser
 sphinx-sitemap
 sphinxcontrib-mermaid
 linkify-it-py
+beautifulsoup4

@@ -121,9 +121,10 @@ master_doc = "index"
 latex_engine = "xelatex"
 
 # Simplified LaTeX configuration for Chinese-only docs
-# Use xeCJK directly without polyglossia to avoid font conflicts
+# Use xeCJK directly with explicit Noto Sans CJK SC font
 latex_elements = {
     "xeCJK": True,
+    "xeCJK_font": "Noto Sans CJK SC",
     "sphinxsetup": "verbatimforcewraps",
 }
 
