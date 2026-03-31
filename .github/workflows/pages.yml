@@ -92,7 +92,11 @@ jobs:
 
       - name: Install pandoc
         run: |
-          apt-get update && apt-get install -y pandoc
+          # Download pandoc from GitHub releases (more reliable)
+          curl -sL https://github.com/jgm/pandoc/releases/download/3.1.13/pandoc-3.1.13-linux-amd64.tar.gz | tar xz
+          sudo mv pandoc-3.1.13/bin/pandoc /usr/local/bin/
+          sudo chmod +x /usr/local/bin/pandoc
+          pandoc --version
 
       - name: Install dependencies
         run: pip install -r requirements.txt

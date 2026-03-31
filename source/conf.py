@@ -121,22 +121,24 @@ master_doc = "index"
 latex_engine = "xelatex"
 
 # Use xeCJK for Chinese character support
+# Note: Don't specify font files - xeCJK auto-detects system Chinese fonts
 latex_elements = {
     "fontenc": "",
-    "fontpkg": r"""
-\usepackage{fontspec}
-\setmainfont{NotoSerifCJKsc-Regular.ttf}[]
-\setsansfont{NotoSansCJKsc-Regular.ttf}[]
-\setmonofont{NotoSansMonoCJKsc-Regular.ttf}[]
-""",
     "preamble": r"""
 \usepackage{xeCJK}
 \xeCJKsetup{
     CJKspace=true,
-    xCJKecglue={}
+    xCJKecglue={},
+    CJKmathspace=true
 }
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{polyglossia}
+  \setmainlanguage{chinese}
+  \setotherlanguage{english}
+\fi
 """,
     "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
     "polyglossia_names": ["chinese"],
