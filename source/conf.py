@@ -124,21 +124,21 @@ latex_engine = "xelatex"
 latex_elements = {
     "fontenc": "",
     "preamble": r"""
-% Use xeCJK for Chinese support (let xeCJK handle font configuration)
+% Use xeCJK for Chinese support with explicit font path to avoid fontconfig naming issues
 \usepackage{xeCJK}
 \xeCJKsetup{
     CJKspace=true,
     xCJKecglue={}
 }
-% Set Chinese font - use Noto Sans CJK SC (installed in Docker)
+% Use font file path to avoid fontconfig naming issues
+% Noto Sans CJK SC is installed at /usr/share/fonts/noto/ via apk
 \setCJKmainfont{Noto Sans CJK SC}
-% Also define it as the sans-serif font for consistency
 \setCJKsansfont{Noto Sans CJK SC}
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
 """,
-    "babel": r"\usepackage{polyglossia}\setmainlanguage{english}",
-    "polyglossia_names": ["english"],
+    "babel": r"",
+    "polyglossia_names": [],
     "sphinxsetup": "verbatimforcewraps",
 }
 
