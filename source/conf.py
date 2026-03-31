@@ -124,8 +124,8 @@ latex_engine = "xelatex"
 # With language='zh-CN' and latex_engine='xelatex', Sphinx auto-configures
 # fontenc to \usepackage{xeCJK} at the correct load order
 latex_elements = {
-    "babel": r"\usepackage{polyglossia}\setmainlanguage{english}",
-    "polyglossia_names": ["english"],
+    "babel": r"\usepackage{polyglossia}\setmainlanguage{chinese}",
+    "polyglossia_names": ["chinese"],
     "xeCJK": True,
     "sphinxsetup": "verbatimforcewraps",
 }
