@@ -61,9 +61,9 @@ jobs:
         uses: xu-cheng/texlive-action@v3
         with:
           texlive_version: '2024'
-          scheme: 'full'
+          scheme: 'small'
           run: |
-            tlmgr install latexmk
+            tlmgr install latexmk xeCJK ctex fontspec
 
       - name: Build PDF
         run: |
