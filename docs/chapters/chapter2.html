@@ -1,12 +1,12 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. 数据导入与频段处理 &mdash; RMTDataPro 0.1.0 documentation</title>
+  <title>6. 数据导入 &mdash; RMTDataPro 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
@@ -14,9 +14,444 @@
     <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/chapters/chapter2.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/documentation_options.js?v=ebab40fa"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,13 +479,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">4. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">1. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">2. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">3. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">4. 快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">5. 软件概述</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. 数据导入与频段处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sbf">6.1. 📂 SBF 数据导入</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. 数据导入</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sbf">6.1. 📂 SBF 文件导入</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">6.1.1. 导入方式</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">方式一：通过菜单导入</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">方式二：通过拖拽导入</a></li>
@@ -60,23 +495,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">6.1.3. 导入后检查</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">6.2. 📡 频段选择与处理</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">6.2.1. 选择目标频段</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.2.2. 频段处理参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">6.2. 🗂️ 工程管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.2.1. 创建测线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6.2.2. 创建测点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">6.2.3. 组织结构</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">6.3. 🔄 阻抗估计模式</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#scalar-impedance">6.3.1. 标量阻抗（Scalar Impedance）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tensor-impedance">6.3.2. 张量阻抗（Tensor Impedance）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">6.3.3. 选择建议</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">6.4. 📊 数据质量检查</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">6.4.1. 相干度阈值</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">6.4.2. 检查步骤</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">6.5. ❓ 常见问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">6.3. ❓ 常见问题</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chapter3.html">7. FFT 处理</a></li>
@@ -109,9 +534,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">6. </span>数据导入与频段处理</li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>数据导入</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/chapters/chapter2.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -120,18 +544,18 @@
            <div itemprop="articleBody">
              
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6. </span>数据导入与频段处理<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>本章介绍 RMTDataPro 中如何导入 SBF 数据文件、选择处理频段，以及进行阻抗估计的基本操作。</p>
+<h1><span class="section-number">6. </span>数据导入<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本章详细介绍如何将 SBF 格式的频谱数据导入 RMTDataPro 工程。</p>
 <section id="sbf">
-<h2><span class="section-number">6.1. </span>📂 SBF 数据导入<a class="headerlink" href="#sbf" title="Link to this heading"></a></h2>
+<h2><span class="section-number">6.1. </span>📂 SBF 文件导入<a class="headerlink" href="#sbf" title="Link to this heading"></a></h2>
 <section id="id2">
 <h3><span class="section-number">6.1.1. </span>导入方式<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>RMTDataPro 提供两种数据导入方式：</p>
 <section id="id3">
 <h4>方式一：通过菜单导入<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
-<li><p>选择 <strong>项目</strong> → <strong>打开工程</strong>（或新建工程）</p></li>
-<li><p>在工程管理面板中，选中目标测线或测点</p></li>
+<li><p>选择 <strong>项目</strong> → <strong>新建工程</strong>（或打开已有工程）</p></li>
+<li><p>在工程管理面板中，选中目标测线</p></li>
 <li><p>右键点击 → <strong>导入 SBF 文件</strong></p></li>
 <li><p>在文件对话框中选择要导入的 SBF 文件</p></li>
 <li><p>点击”打开”确认导入</p></li>
@@ -197,130 +621,41 @@
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">6.2. </span>📡 频段选择与处理<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<h2><span class="section-number">6.2. </span>🗂️ 工程管理<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <section id="id8">
-<h3><span class="section-number">6.2.1. </span>选择目标频段<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<p>在数据处理窗口中：</p>
+<h3><span class="section-number">6.2.1. </span>创建测线<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>展开测点节点，显示所有可用频段</p></li>
-<li><p>勾选要处理的频段（可多选）</p></li>
-<li><p>常用做法是先处理 D3 或 D4 频段进行浅层探测</p></li>
+<li><p>在工程管理面板中右键点击工程节点</p></li>
+<li><p>选择 <strong>新建测线</strong></p></li>
+<li><p>输入测线名称</p></li>
+<li><p>测线创建完成</p></li>
 </ol>
 </section>
 <section id="id9">
-<h3><span class="section-number">6.2.2. </span>频段处理参数<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>参数</p></th>
-<th class="head"><p>说明</p></th>
-<th class="head"><p>推荐值</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>窗口长度</strong></p></td>
-<td><p>FFT 分析的窗口大小</p></td>
-<td><p>512-1024</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>重叠率</strong></p></td>
-<td><p>窗口重叠百分比</p></td>
-<td><p>0.5-0.75</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>时间带宽积</strong></p></td>
-<td><p>MTSM 多窗口参数</p></td>
-<td><p>2.0-4.0</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="id10">
-<h2><span class="section-number">6.3. </span>🔄 阻抗估计模式<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
-<p>RMTDataPro 支持两种阻抗估计模式：</p>
-<section id="scalar-impedance">
-<h3><span class="section-number">6.3.1. </span>标量阻抗（Scalar Impedance）<a class="headerlink" href="#scalar-impedance" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><strong>适用场景</strong>: 探测区域电性结构较为均匀、二维特征不明显</p></li>
-<li><p><strong>优点</strong>: 计算简单、抗干扰能力较强</p></li>
-<li><p><strong>配置</strong>: 在参数配置中选择”标量阻抗”模式</p></li>
-</ul>
-</section>
-<section id="tensor-impedance">
-<h3><span class="section-number">6.3.2. </span>张量阻抗（Tensor Impedance）<a class="headerlink" href="#tensor-impedance" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><strong>适用场景</strong>: 探测区域存在明显二维/三维电性特征</p></li>
-<li><p><strong>优点</strong>: 可揭示地电结构的走向特征</p></li>
-<li><p><strong>配置</strong>: 在参数配置中选择”张量阻抗”模式</p></li>
-</ul>
-</section>
-<section id="id11">
-<h3><span class="section-number">6.3.3. </span>选择建议<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>场景</p></th>
-<th class="head"><p>推荐模式</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>初步勘探、快速筛选</p></td>
-<td><p>标量阻抗</p></td>
-</tr>
-<tr class="row-odd"><td><p>复杂地电结构</p></td>
-<td><p>张量阻抗</p></td>
-</tr>
-<tr class="row-even"><td><p>均匀地层</p></td>
-<td><p>标量阻抗</p></td>
-</tr>
-<tr class="row-odd"><td><p>断裂带、构造区域</p></td>
-<td><p>张量阻抗</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="id12">
-<h2><span class="section-number">6.4. </span>📊 数据质量检查<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
-<section id="id13">
-<h3><span class="section-number">6.4.1. </span>相干度阈值<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
-<p>处理结果的质量可通过相干度（γ²）判断：</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>相干度 γ²</p></th>
-<th class="head"><p>数据质量</p></th>
-<th class="head"><p>是否可用</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>&gt; 0.8</p></td>
-<td><p>优质</p></td>
-<td><p>✅ 可用于解释</p></td>
-</tr>
-<tr class="row-odd"><td><p>0.5 - 0.8</p></td>
-<td><p>良好</p></td>
-<td><p>✅ 可用</p></td>
-</tr>
-<tr class="row-even"><td><p>0.3 - 0.5</p></td>
-<td><p>一般</p></td>
-<td><p>⚠️ 谨慎使用</p></td>
-</tr>
-<tr class="row-odd"><td><p>&lt; 0.3</p></td>
-<td><p>较差</p></td>
-<td><p>❌ 不建议使用</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id14">
-<h3><span class="section-number">6.4.2. </span>检查步骤<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<h3><span class="section-number">6.2.2. </span>创建测点<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>处理完成后，查看结果显示窗口</p></li>
-<li><p>观察 ρ-φ 曲线的平滑程度</p></li>
-<li><p>标记相干度较低的测点</p></li>
-<li><p>必要时重新采集或更换测点位置</p></li>
+<li><p>右键点击测线节点</p></li>
+<li><p>选择 <strong>新建测点</strong></p></li>
+<li><p>输入测点名称</p></li>
+<li><p>测点创建完成，可以导入 SBF 数据</p></li>
 </ol>
 </section>
+<section id="id10">
+<h3><span class="section-number">6.2.3. </span>组织结构<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<object data="../_images/mermaid-4fe2be0227baa284012c7b21f8df71f7e801e166.svg" type="image/svg+xml">
+            <p class="warning">graph TB
+    A[工程 Project] --&gt; B[测线 Line-01]
+    A --&gt; C[测线 Line-02]
+    B --&gt; D[测点 Site-A]
+    B --&gt; E[测点 Site-B]
+    C --&gt; F[测点 Site-C]
+    D --&gt; G[SBF: D1+D2+D3]
+    E --&gt; H[SBF: D1+D2+D4]
+    F --&gt; I[SBF: D2+D3+D4]</p></object>
 </section>
-<section id="id15">
-<h2><span class="section-number">6.5. </span>❓ 常见问题<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+</section>
+<section id="id11">
+<h2><span class="section-number">6.3. </span>❓ 常见问题<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>问题</p></th>
@@ -337,18 +672,18 @@
 <td><p>采集时未启用该频段</p></td>
 <td><p>检查设备配置或使用其他 SBF 文件</p></td>
 </tr>
-<tr class="row-even"><td><p>数据曲线异常</p></td>
-<td><p>采样率不匹配或噪声干扰</p></td>
-<td><p>调整参数或重新处理</p></td>
+<tr class="row-even"><td><p>拖拽导入无效</p></td>
+<td><p>未选中测线节点</p></td>
+<td><p>先选中目标测线，再拖拽文件</p></td>
 </tr>
-<tr class="row-odd"><td><p>处理速度慢</p></td>
-<td><p>参数设置过大</p></td>
-<td><p>减少窗口长度或降低重叠率</p></td>
+<tr class="row-odd"><td><p>导入速度慢</p></td>
+<td><p>文件过大或数量过多</p></td>
+<td><p>等待或分批导入</p></td>
 </tr>
 </tbody>
 </table>
 <hr class="docutils" />
-<p><strong>下一节</strong>: <a class="reference internal" href="chapter3.html"><span class="doc std std-doc">FFT 处理参数配置</span></a></p>
+<p><strong>下一节</strong>: <a class="reference internal" href="chapter3.html"><span class="doc std std-doc">FFT 参数配置与处理</span></a></p>
 </section>
 </section>
 

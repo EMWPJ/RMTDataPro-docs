@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -14,7 +14,7 @@
     <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/index.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/documentation_options.js?v=ebab40fa"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -48,7 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="intro/install.html">3. 安装指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro/quickstart.html">4. 快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter1.html">5. 软件概述</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapters/chapter2.html">6. 数据导入与频段处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter2.html">6. 数据导入</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter3.html">7. FFT 处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter4.html">8. 数据处理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter5.html">9. 批量导出与工具</a></li>
@@ -81,7 +81,6 @@
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">RMTDataPro 文档</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -108,13 +107,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intro/index.html">2. 软件简介</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro/index.html#rmt">2.1. 什么是 RMT？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#rmtdatapro-mtdatapro">2.2. RMTDataPro 与 MTDataPro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id5">2.3. 主要功能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id11">2.4. 系统界面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id12">2.5. 数据流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id13">2.6. 版本信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id14">2.7. RMT 方法背景</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id15">2.8. 技术架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id5">2.2. 主要功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id11">2.3. 系统界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id12">2.4. 操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id14">2.5. 版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id15">2.6. RMT 方法背景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/index.html#id16">2.7. 技术架构</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intro/install.html">3. 安装指南</a><ul>
@@ -135,20 +133,20 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter1.html">5. 软件概述</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#rmt-mt">5.1. 📡 RMT 与 MT 处理差异</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id2">5.2. 🏗️ 数据层级结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id3">5.3. 📂 数据导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id6">5.4. 🖥️ 界面布局</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id9">5.5. ⚡ 数据处理流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id11">5.6. 📊 版本信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id2">5.1. 操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id4">5.2. 🏗️ 数据层级结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id5">5.3. 📂 数据导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id8">5.4. 🔧 标定管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#fft">5.5. ⚙️ FFT 参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id13">5.6. 📊 FFT 处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id16">5.7. 📤 结果导出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter1.html#id19">5.8. 🖥️ 界面布局</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chapters/chapter2.html">6. 数据导入与频段处理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#sbf">6.1. 📂 SBF 数据导入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id7">6.2. 📡 频段选择与处理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id10">6.3. 🔄 阻抗估计模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id12">6.4. 📊 数据质量检查</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id15">6.5. ❓ 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter2.html">6. 数据导入</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#sbf">6.1. 📂 SBF 文件导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id7">6.2. 🗂️ 工程管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/chapter2.html#id11">6.3. ❓ 常见问题</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chapters/chapter3.html">7. FFT 处理</a><ul>
