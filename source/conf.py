@@ -124,21 +124,34 @@ latex_engine = "xelatex"
 latex_elements = {
     "fontenc": "",
     "preamble": r"""
-% Use xeCJK for Chinese support with explicit font path to avoid fontconfig naming issues
+\usepackage{iftex}
+\ifXeTeX
+  % Load fontspec for Latin fonts
+  \usepackage{fontspec}
+  \setmainfont{FreeSerif}
+  \setsansfont{FreeSans}
+  \setmonofont{FreeMono}
+  % Define CJK font for polyglossia
+  \newfontfamily\cjkfont{Noto Sans CJK SC}
+  % Load polyglossia for language support
+  \usepackage{polyglossia}
+  \setmainlanguage{english}
+  \setotherlanguage{chinese}
+\fi
+% Load xeCJK for Chinese support
 \usepackage{xeCJK}
 \xeCJKsetup{
     CJKspace=true,
     xCJKecglue={}
 }
-% Use font file path to avoid fontconfig naming issues
-% Noto Sans CJK SC is installed at /usr/share/fonts/noto/ via apk
+% Set Chinese font - use Noto Sans CJK SC (installed via apk)
 \setCJKmainfont{Noto Sans CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
 """,
-    "babel": r"",
-    "polyglossia_names": [],
+    "babel": r"\usepackage{polyglossia}\setmainlanguage{english}",
+    "polyglossia_names": ["english"],
     "sphinxsetup": "verbatimforcewraps",
 }
 
