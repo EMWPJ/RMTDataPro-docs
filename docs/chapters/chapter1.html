@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. 软件概述 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/chapters/chapter1.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. SBF 数据格式" href="chapter2.html" />
+    <link rel="prev" title="3. 快速开始" href="../intro/quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. 软件概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rmt-mt">4.1. 📡 RMT 与 MT 处理差异</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">4.2. 🏗️ 数据层级结构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#project">4.2.1. 工程（Project）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line">4.2.2. 测线（Line）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#site">4.2.3. 测点（Site）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sbf">4.3. 📂 SBF 数据格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">4.4. 🖥️ 界面布局</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.4.1. 菜单栏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.4.2. 主要面板</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">4.5. ⚡ 数据处理流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.5.1. 处理步骤详解</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">4.6. 🔧 核心模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">4.7. 📊 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">8. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixB.html">14. 附录 B：文件格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixC.html">15. 附录 C：参数参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixD.html">16. 附录 D：常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/contributing.html">20. 贡献指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>软件概述</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/chapter1.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">4. </span>软件概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本章介绍 RMTDataPro 的整体架构、数据流程和界面布局。</p>
+<section id="rmt-mt">
+<h2><span class="section-number">4.1. </span>📡 RMT 与 MT 处理差异<a class="headerlink" href="#rmt-mt" title="Link to this heading"></a></h2>
+<p>RMT（射频大地电磁法）与传统 MT（大地电磁法）在数据处理流程上有本质区别：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>处理阶段</p></th>
+<th class="head"><p>MTDataPro</p></th>
+<th class="head"><p>RMTDataPro</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>原始数据</strong></p></td>
+<td><p>时间序列（Ex, Ey, Hx, Hy, Hz）</p></td>
+<td><p>频谱数据（已预计算）</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FFT 处理</strong></p></td>
+<td><p>需要配置窗口、重叠等参数</p></td>
+<td><p>不需要（已预先计算）</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>数据格式</strong></p></td>
+<td><p>AGE、SEG-D、miniSEED</p></td>
+<td><p>SBF（Station Binary Format）</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>处理目标</strong></p></td>
+<td><p>时间序列 → 阻抗</p></td>
+<td><p>频谱 → 传输函数 → 阻抗</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>计算量</strong></p></td>
+<td><p>大（完整 FFT）</p></td>
+<td><p>小（直接估计）</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p><strong>核心区别</strong>: MTDataPro 处理原始时间序列数据，需要配置完整的 FFT 参数；而 RMTDataPro 处理的是已经过预处理的频谱数据，主要进行阻抗估计和后处理。</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.2. </span>🏗️ 数据层级结构<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>RMTDataPro 采用层级化的数据组织方式：</p>
+<object data="../_images/mermaid-7ea74a5efd6268d64b147786a8548cb0320cbe74.svg" type="image/svg+xml">
+            <p class="warning">graph TB
+    A[工程 Project] --&gt; B[测线 Line]
+    B --&gt; C[测点 Site]
+    C --&gt; D[SBF数据]
+    D --&gt; E[D1频段 39kHz]
+    D --&gt; F[D2频段 312kHz]
+    D --&gt; G[D3频段 832kHz]
+    D --&gt; H[D4频段 2496kHz]</p></object>
+<section id="project">
+<h3><span class="section-number">4.2.1. </span>工程（Project）<a class="headerlink" href="#project" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>最高层级数据容器</p></li>
+<li><p>包含全局参数和所有测线</p></li>
+<li><p>支持工程保存与加载（.rmtproj 格式）</p></li>
+</ul>
+</section>
+<section id="line">
+<h3><span class="section-number">4.2.2. </span>测线（Line）<a class="headerlink" href="#line" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>同一测线上的测点集合</p></li>
+<li><p>便于批量操作和线号管理</p></li>
+<li><p>支持测线重命名、排序</p></li>
+</ul>
+</section>
+<section id="site">
+<h3><span class="section-number">4.2.3. </span>测点（Site）<a class="headerlink" href="#site" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>独立的数据采集站</p></li>
+<li><p>包含多个 SBF 文件和频段数据</p></li>
+<li><p>支持单点处理和多点批处理</p></li>
+</ul>
+</section>
+</section>
+<section id="sbf">
+<h2><span class="section-number">4.3. </span>📂 SBF 数据格式<a class="headerlink" href="#sbf" title="Link to this heading"></a></h2>
+<p>SBF（Station Binary Format）是一种二进制数据格式，包含以下频段：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>频段</p></th>
+<th class="head"><p>采样率</p></th>
+<th class="head"><p>中心频率</p></th>
+<th class="head"><p>应用场景</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D1</strong></p></td>
+<td><p>39 kHz</p></td>
+<td><p>-</p></td>
+<td><p>深部探测</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D2</strong></p></td>
+<td><p>312 kHz</p></td>
+<td><p>-</p></td>
+<td><p>中等深度</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D3</strong></p></td>
+<td><p>832 kHz</p></td>
+<td><p>-</p></td>
+<td><p>浅部探测</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D4</strong></p></td>
+<td><p>2496 kHz</p></td>
+<td><p>-</p></td>
+<td><p>极浅部/近地表</p></td>
+</tr>
+</tbody>
+</table>
+<p>SBF 文件结构包含多个数据段（Section）：</p>
+<ul class="simple">
+<li><p><strong>Text Section</strong>: 文本注释信息</p></li>
+<li><p><strong>Ini Section</strong>: 初始化参数</p></li>
+<li><p><strong>Trass Section</strong>: 时间序列数据</p></li>
+<li><p><strong>Spectrum Section</strong>: 频谱数据</p></li>
+<li><p><strong>Device Parameter</strong>: 设备参数</p></li>
+<li><p><strong>Registrar Parameter</strong>: 注册参数</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.4. </span>🖥️ 界面布局<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>RMTDataPro 主界面采用多面板布局：</p>
+<object data="../_images/mermaid-fac5bb7964493ac53c7f5ccddd706aea8b987205.svg" type="image/svg+xml">
+            <p class="warning">graph TB
+    subgraph 主窗口布局
+        A[菜单栏] --&gt; B[工具栏]
+        B --&gt; C[主工作区]
+        C --&gt; D[工程管理面板]
+        C --&gt; E[数据处理窗口]
+        C --&gt; F[结果显示窗口]
+        C --&gt; G[Z曲线叠加窗口]
+        D --&gt; H[测点列表]
+        E --&gt; I[参数配置]
+        E --&gt; J[处理进度]
+        F --&gt; K[曲线显示]
+        F --&gt; L[数据表格]
+    end</p></object>
+<section id="id4">
+<h3><span class="section-number">4.4.1. </span>菜单栏<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>菜单</p></th>
+<th class="head"><p>功能</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>项目</strong></p></td>
+<td><p>新建、打开、保存、关闭工程；批量导出</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>工具</strong></p></td>
+<td><p>About 关于</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>设置</strong></p></td>
+<td><p>FFT参数、校准、样式设置、图表系列设置、语言</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">4.4.2. </span>主要面板<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>工程管理面板</strong>: 左侧，层级显示测线/测点</p></li>
+<li><p><strong>数据处理窗口</strong>: 右侧，处理参数配置与执行</p></li>
+<li><p><strong>结果显示窗口</strong>: 下方/右侧，ρ-φ 曲线与数据表格</p></li>
+<li><p><strong>Z曲线叠加窗口</strong>: 独立标签页，多测点对比</p></li>
+</ol>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">4.5. </span>⚡ 数据处理流程<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<object data="../_images/mermaid-d25b26b901f0f367302f4f9a895129b73e72523e.svg" type="image/svg+xml">
+            <p class="warning">graph LR
+    A[SBF数据] --&gt; B[数据加载]
+    B --&gt; C[FFT参数配置]
+    C --&gt; D[频段选择]
+    D --&gt; E[处理执行]
+    E --&gt; F[结果存储]
+    F --&gt; G[曲线显示]
+    G --&gt; H[数据导出]</p></object>
+<section id="id7">
+<h3><span class="section-number">4.5.1. </span>处理步骤详解<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>数据加载</strong>: 读取 SBF 文件，解析各频段数据</p></li>
+<li><p><strong>参数配置</strong>: 设置窗口长度、重叠、目标频点</p></li>
+<li><p><strong>频段处理</strong>: 按采样率分别处理 D1-D4 频段</p></li>
+<li><p><strong>阻抗估计</strong>: 使用 Gamble 方法计算张量/标量阻抗</p></li>
+<li><p><strong>结果输出</strong>: 显示曲线，导出为 EDI 或文本格式</p></li>
+</ol>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">4.6. </span>🔧 核心模块<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>模块</p></th>
+<th class="head"><p>路径</p></th>
+<th class="head"><p>功能</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>主窗口</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RMTDataPro.h/cpp</span></code></p></td>
+<td><p>应用主界面、菜单响应</p></td>
+</tr>
+<tr class="row-odd"><td><p>项目管理</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ProjectManage/</span></code></p></td>
+<td><p>工程、测线、测点数据模型</p></td>
+</tr>
+<tr class="row-even"><td><p>SBF读取器</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DataReader/SBF/</span></code></p></td>
+<td><p>SBF 格式解析与加载</p></td>
+</tr>
+<tr class="row-odd"><td><p>FFT处理器</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Processor/rmtprocessor.h/cpp</span></code></p></td>
+<td><p>频谱处理与阻抗估计</p></td>
+</tr>
+<tr class="row-even"><td><p>校准管理</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Calibration/</span></code></p></td>
+<td><p>系统响应校准</p></td>
+</tr>
+<tr class="row-odd"><td><p>UI组件</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UI/</span></code></p></td>
+<td><p>处理窗口、结果显示、Z曲线叠加</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h2><span class="section-number">4.7. </span>📊 版本信息<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>组件</p></th>
+<th class="head"><p>版本</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RMTDataPro</p></td>
+<td><p>v0.1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qt</p></td>
+<td><p>6.9+</p></td>
+</tr>
+<tr class="row-even"><td><p>Intel MKL</p></td>
+<td><p>2024.2+</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><strong>下一节</strong>: <a class="reference internal" href="chapter2.html"><span class="doc std std-doc">SBF 数据格式</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../intro/quickstart.html" class="btn btn-neutral float-left" title="3. 快速开始" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter2.html" class="btn btn-neutral float-right" title="5. SBF 数据格式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

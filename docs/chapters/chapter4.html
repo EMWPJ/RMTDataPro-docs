@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. 数据处理 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/chapters/chapter4.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. 批量导出与工具" href="chapter5.html" />
+    <link rel="prev" title="7. FFT 处理" href="chapter3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. 数据处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.1. 🔄 处理流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">8.2. 📊 处理步骤详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">8.2.1. 1. 测点选择</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">8.2.2. 2. 数据加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">8.2.3. 3. 频段处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">8.2.4. 4. 结果输出</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">8.3. 📈 进度监控</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">8.3.1. 进度条</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">8.3.2. 详细进度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">8.3.3. 信号与槽</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">8.4. 📉 结果可视化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">8.4.1. ρ-φ 曲线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">8.4.2. 数据表格</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">8.5. ✔️ 质量评估</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">8.5.1. 相干度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">8.5.2. 误差估计</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">8.6. 🛑 取消与中断</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">8.6.1. 取消处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">8.6.2. 处理中断点</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">8.7. 📤 结果保存</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixB.html">14. 附录 B：文件格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixC.html">15. 附录 C：参数参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixD.html">16. 附录 D：常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/contributing.html">20. 贡献指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>数据处理</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/chapter4.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">8. </span>数据处理<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本章介绍 RMTDataPro 中的数据处理流程、进度监控和结果评估。</p>
+<section id="id2">
+<h2><span class="section-number">8.1. </span>🔄 处理流程<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>数据处理是将 SBF 频谱数据转换为可用阻抗结果的核心步骤：</p>
+<object data="../_images/mermaid-dd51c59fee8b61ead437c74a7ce2bbd5eccbc89c.svg" type="image/svg+xml">
+            <p class="warning">graph TB
+        A[选择测点] --&gt; B[加载SBF数据]
+        B --&gt; C[配置FFT参数]
+        C --&gt; D[按频段处理]
+        D --&gt; E[D1频段]
+        D --&gt; F[D2频段]
+        D --&gt; G[D3频段]
+        D --&gt; H[D4频段]
+        
+        E --&gt; I[计算传输函数]
+        F --&gt; I
+        G --&gt; I
+        H --&gt; I
+        
+        I --&gt; J[应用校准]
+        J --&gt; K[输出阻抗结果]
+        K --&gt; L[显示曲线]
+        L --&gt; M[保存结果]</p></object>
+</section>
+<section id="id3">
+<h2><span class="section-number">8.2. </span>📊 处理步骤详解<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3><span class="section-number">8.2.1. </span>1. 测点选择<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>在测点列表中选择要处理的测点：</p>
+<ul class="simple">
+<li><p><strong>单点处理</strong>: 选择单个测点，右键 → 处理</p></li>
+<li><p><strong>批量处理</strong>: 选择多个测点（Ctrl/Shift 多选），右键 → 批量处理</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">8.2.2. </span>2. 数据加载<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<object data="../_images/mermaid-dbdc033c812e2f8b4721acffd8d977b4ae9c74bf.svg" type="image/svg+xml">
+            <p class="warning">graph LR
+        A[SBF文件] --&gt; B[解析Header]
+        B --&gt; C[读取Trass Section]
+        C --&gt; D[读取Spectrum Section]
+        D --&gt; E[提取设备参数]
+        E --&gt; F[加载到内存]</p></object>
+</section>
+<section id="id6">
+<h3><span class="section-number">8.2.3. </span>3. 频段处理<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>每个频段独立处理：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>频段</p></th>
+<th class="head"><p>采样率</p></th>
+<th class="head"><p>窗口数</p></th>
+<th class="head"><p>处理时间（估计）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>D1</p></td>
+<td><p>39 kHz</p></td>
+<td><p>较多</p></td>
+<td><p>较长</p></td>
+</tr>
+<tr class="row-odd"><td><p>D2</p></td>
+<td><p>312 kHz</p></td>
+<td><p>中等</p></td>
+<td><p>中等</p></td>
+</tr>
+<tr class="row-even"><td><p>D3</p></td>
+<td><p>832 kHz</p></td>
+<td><p>较少</p></td>
+<td><p>较短</p></td>
+</tr>
+<tr class="row-odd"><td><p>D4</p></td>
+<td><p>2496 kHz</p></td>
+<td><p>最少</p></td>
+<td><p>最短</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h3><span class="section-number">8.2.4. </span>4. 结果输出<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>处理完成后自动：</p>
+<ul class="simple">
+<li><p>计算视电阻率（ρ）和相位（φ）</p></li>
+<li><p>计算误差估计</p></li>
+<li><p>存储到结果对象</p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">8.3. </span>📈 进度监控<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>处理过程中，软件提供实时进度反馈：</p>
+<section id="id9">
+<h3><span class="section-number">8.3.1. </span>进度条<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>主进度条显示整体完成百分比：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>████████████████████░░░░ 80%
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3><span class="section-number">8.3.2. </span>详细进度<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>详细信息显示当前处理的窗口：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>处理中: D2 频段
+窗口: 45 / 120
+采样率: 312 kHz
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">8.3.3. </span>信号与槽<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 连接进度信号</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RMTProcessor</span><span class="o">::</span><span class="n">progressChanged</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">MyWidget</span><span class="o">::</span><span class="n">onProgress</span><span class="p">);</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RMTProcessor</span><span class="o">::</span><span class="n">detailedProgressChanged</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">MyWidget</span><span class="o">::</span><span class="n">onDetailedProgress</span><span class="p">);</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RMTProcessor</span><span class="o">::</span><span class="n">processingFinished</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">MyWidget</span><span class="o">::</span><span class="n">onFinished</span><span class="p">);</span>
+
+<span class="c1">// 信号定义</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">progressChanged</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="p">);</span><span class="w">           </span><span class="c1">// 整体进度 0-100</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">detailedProgressChanged</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">sampleRate</span><span class="p">);</span><span class="w">  </span><span class="c1">// 详细进度</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">processingFinished</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="p">);</span><span class="w">          </span><span class="c1">// 处理完成</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">8.4. </span>📉 结果可视化<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<section id="id13">
+<h3><span class="section-number">8.4.1. </span>ρ-φ 曲线<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>结果显示窗口显示视电阻率和相位随频率变化的曲线：</p>
+<object data="../_images/mermaid-50c870856ad8747aaf382d8c1e5ccd22318b04ed.svg" type="image/svg+xml">
+            <p class="warning">graph LR
+        subgraph 曲线显示
+            A[频率] --&gt; B[ρ-φ 双Y轴]
+            B --&gt; C[ρ 曲线&lt;br/&gt;左侧Y轴]
+            B --&gt; D[φ 曲线&lt;br/&gt;右侧Y轴]
+        end</p></object>
+</section>
+<section id="id14">
+<h3><span class="section-number">8.4.2. </span>数据表格<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>同时显示详细数值：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>频率 (Hz)</p></th>
+<th class="head"><p>ρxx</p></th>
+<th class="head"><p>ρxy</p></th>
+<th class="head"><p>φxx</p></th>
+<th class="head"><p>φxy</p></th>
+<th class="head"><p>误差</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>10.5</p></td>
+<td><p>45.2</p></td>
+<td><p>-15°</p></td>
+<td><p>72°</p></td>
+<td><p>0.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>200</p></td>
+<td><p>12.3</p></td>
+<td><p>48.1</p></td>
+<td><p>-12°</p></td>
+<td><p>68°</p></td>
+<td><p>0.04</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id15">
+<h2><span class="section-number">8.5. </span>✔️ 质量评估<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<section id="id16">
+<h3><span class="section-number">8.5.1. </span>相干度<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p>相干度（Coherence）反映信号质量：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>相干度范围</p></th>
+<th class="head"><p>质量评估</p></th>
+<th class="head"><p>建议</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&gt; 0.8</p></td>
+<td><p>优秀</p></td>
+<td><p>可直接使用</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5-0.8</p></td>
+<td><p>良好</p></td>
+<td><p>可接受</p></td>
+</tr>
+<tr class="row-even"><td><p>0.3-0.5</p></td>
+<td><p>一般</p></td>
+<td><p>谨慎使用</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt; 0.3</p></td>
+<td><p>较差</p></td>
+<td><p>考虑重测</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3><span class="section-number">8.5.2. </span>误差估计<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>处理结果包含误差估计：</p>
+<ul class="simple">
+<li><p><strong>标准误差</strong>: 单频点多次估计的离散程度</p></li>
+<li><p><strong>相对误差</strong>: 相对于阻抗幅值的百分比</p></li>
+</ul>
+</section>
+</section>
+<section id="id18">
+<h2><span class="section-number">8.6. </span>🛑 取消与中断<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<section id="id19">
+<h3><span class="section-number">8.6.1. </span>取消处理<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<p>在处理过程中可以取消：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 用户点击取消按钮</span>
+<span class="n">processor</span><span class="o">-&gt;</span><span class="n">cancel</span><span class="p">();</span>
+
+<span class="c1">// 处理器检查取消标志并停止</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3><span class="section-number">8.6.2. </span>处理中断点<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>频段边界可以安全中断</p></li>
+<li><p>已完成的频段结果会保留</p></li>
+<li><p>从断点恢复需要重新处理</p></li>
+</ul>
+</section>
+</section>
+<section id="id21">
+<h2><span class="section-number">8.7. </span>📤 结果保存<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<p>处理结果自动关联到测点：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 获取处理结果</span>
+<span class="n">RMTFFTResult</span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processor</span><span class="o">-&gt;</span><span class="n">getResult</span><span class="p">();</span>
+
+<span class="c1">// 结果包含：</span>
+<span class="c1">// - 各频段的阻抗张量</span>
+<span class="c1">// - 误差估计</span>
+<span class="c1">// - 处理参数副本</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>下一节</strong>: <a class="reference internal" href="chapter5.html"><span class="doc std std-doc">批量导出与工具</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter3.html" class="btn btn-neutral float-left" title="7. FFT 处理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter5.html" class="btn btn-neutral float-right" title="9. 批量导出与工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

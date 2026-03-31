@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15. 附录 C：参数参考 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/appendices/appendixC.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16. 附录 D：常见问题" href="appendixD.html" />
+    <link rel="prev" title="14. 附录 B：文件格式" href="appendixB.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4.html">8. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixB.html">14. 附录 B：文件格式</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. 附录 C：参数参考</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fft">15.1. ⚙️ FFT 参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">15.1.1. 基础参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">15.1.2. 阻抗参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">15.1.3. 频段启用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">15.2. 📊 处理结果参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">15.2.1. 阻抗张量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">15.2.2. 视电阻率与相位</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">15.3. 🎨 图表参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">15.3.1. 样式设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">15.3.2. 图表系列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">15.4. 🔧 系统参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">15.4.1. 内存限制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">15.4.2. 并行处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendixD.html">16. 附录 D：常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/contributing.html">20. 贡献指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">15. </span>附录 C：参数参考</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/appendices/appendixC.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="c">
+<h1><span class="section-number">15. </span>附录 C：参数参考<a class="headerlink" href="#c" title="Link to this heading"></a></h1>
+<p>本文档列出 RMTDataPro 中所有可配置的参数及其说明。</p>
+<section id="fft">
+<h2><span class="section-number">15.1. </span>⚙️ FFT 参数<a class="headerlink" href="#fft" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3><span class="section-number">15.1.1. </span>基础参数<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>取值范围</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">windowLength</span></code></p></td>
+<td><p>int</p></td>
+<td><p>512</p></td>
+<td><p>128-4096</p></td>
+<td><p>FFT 窗口长度（点数）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overlap</span></code></p></td>
+<td><p>double</p></td>
+<td><p>0.5</p></td>
+<td><p>0.0-0.95</p></td>
+<td><p>窗口重叠率</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">windowMode</span></code></p></td>
+<td><p>enum</p></td>
+<td><p>Multiple</p></td>
+<td><p>Single/Multiple</p></td>
+<td><p>窗口模式</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">singleWindowType</span></code></p></td>
+<td><p>enum</p></td>
+<td><p>Hanning</p></td>
+<td><p>Hanning/Hamming/Kaiser</p></td>
+<td><p>单窗口窗函数</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timeBandwidthProduct</span></code></p></td>
+<td><p>double</p></td>
+<td><p>2.0</p></td>
+<td><p>1.0-4.0</p></td>
+<td><p>多窗口时间带宽积(NW)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numWindows</span></code></p></td>
+<td><p>int</p></td>
+<td><p>3</p></td>
+<td><p>2-8</p></td>
+<td><p>多窗口数量(K)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bandwidth</span></code></p></td>
+<td><p>int</p></td>
+<td><p>3</p></td>
+<td><p>1-7</p></td>
+<td><p>频率提取带宽</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">15.1.2. </span>阻抗参数<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">impedanceType</span></code></p></td>
+<td><p>enum</p></td>
+<td><p>Tensor</p></td>
+<td><p>Tensor（张量）/Scalar（标量）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">averageType</span></code></p></td>
+<td><p>enum</p></td>
+<td><p>WeightedMean</p></td>
+<td><p>Mean（均值）/WeightedMean（加权均值）</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataType</span></code></p></td>
+<td><p>enum</p></td>
+<td><p>SBF</p></td>
+<td><p>SBF/TR 数据类型</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">15.1.3. </span>频段启用<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据类型</p></th>
+<th class="head"><p>频段</p></th>
+<th class="head"><p>采样率</p></th>
+<th class="head"><p>默认启用</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SBF</p></td>
+<td><p>D1</p></td>
+<td><p>39 kHz</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBF</p></td>
+<td><p>D2</p></td>
+<td><p>312 kHz</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>SBF</p></td>
+<td><p>D3</p></td>
+<td><p>832 kHz</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>SBF</p></td>
+<td><p>D4</p></td>
+<td><p>2496 kHz</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>TR</p></td>
+<td><p>T1</p></td>
+<td><p>-</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>TR</p></td>
+<td><p>T2</p></td>
+<td><p>-</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>TR</p></td>
+<td><p>T3</p></td>
+<td><p>-</p></td>
+<td><p>✓</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">15.2. </span>📊 处理结果参数<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h3><span class="section-number">15.2.1. </span>阻抗张量<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>分量</p></th>
+<th class="head"><p>符号</p></th>
+<th class="head"><p>单位</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zxx</p></td>
+<td><p>Zxx</p></td>
+<td><p>Ω</p></td>
+<td><p>张量阻抗 xx 分量</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zxy</p></td>
+<td><p>Zxy</p></td>
+<td><p>Ω</p></td>
+<td><p>张量阻抗 xy 分量</p></td>
+</tr>
+<tr class="row-even"><td><p>Zyx</p></td>
+<td><p>Zyx</p></td>
+<td><p>Ω</p></td>
+<td><p>张量阻抗 yx 分量</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zyy</p></td>
+<td><p>Zyy</p></td>
+<td><p>Ω</p></td>
+<td><p>张量阻抗 yy 分量</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">15.2.2. </span>视电阻率与相位<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>物理量</p></th>
+<th class="head"><p>符号</p></th>
+<th class="head"><p>单位</p></th>
+<th class="head"><p>计算公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>视电阻率</p></td>
+<td><p>ρ</p></td>
+<td><p>Ω·m</p></td>
+<td><p>ρ = |Z|² / μ₀ω</p></td>
+</tr>
+<tr class="row-odd"><td><p>相位</p></td>
+<td><p>φ</p></td>
+<td><p>°</p></td>
+<td><p>φ = arg(Z)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">15.3. </span>🎨 图表参数<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h3><span class="section-number">15.3.1. </span>样式设置<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>选项</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>背景色</p></td>
+<td><p>白色/浅灰/深灰</p></td>
+<td><p>白色</p></td>
+</tr>
+<tr class="row-odd"><td><p>网格线</p></td>
+<td><p>显示/隐藏</p></td>
+<td><p>显示</p></td>
+</tr>
+<tr class="row-even"><td><p>字体</p></td>
+<td><p>-</p></td>
+<td><p>系统默认</p></td>
+</tr>
+<tr class="row-odd"><td><p>曲线粗细</p></td>
+<td><p>1-5px</p></td>
+<td><p>2px</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">15.3.2. </span>图表系列<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>属性</p></th>
+<th class="head"><p>可选值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>颜色</p></td>
+<td><p>任意颜色代码</p></td>
+</tr>
+<tr class="row-odd"><td><p>线型</p></td>
+<td><p>实线/虚线/点线/点划线</p></td>
+</tr>
+<tr class="row-even"><td><p>标记</p></td>
+<td><p>无/圆形/方形/三角形/菱形</p></td>
+</tr>
+<tr class="row-odd"><td><p>标记大小</p></td>
+<td><p>1-10px</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">15.4. </span>🔧 系统参数<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<section id="id11">
+<h3><span class="section-number">15.4.1. </span>内存限制<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>单次处理最大数据量</p></td>
+<td><p>100 MB</p></td>
+<td><p>防止内存溢出</p></td>
+</tr>
+<tr class="row-odd"><td><p>缓存大小</p></td>
+<td><p>50 MB</p></td>
+<td><p>校准缓存</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">15.4.2. </span>并行处理<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>最大线程数</p></td>
+<td><p>CPU核心数</p></td>
+<td><p>自动检测</p></td>
+</tr>
+<tr class="row-odd"><td><p>进度更新间隔</p></td>
+<td><p>100 ms</p></td>
+<td><p>UI更新频率</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><strong>返回</strong>: <a class="reference internal" href="../index.html"><span class="doc std std-doc">附录索引</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="appendixB.html" class="btn btn-neutral float-left" title="14. 附录 B：文件格式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appendixD.html" class="btn btn-neutral float-right" title="16. 附录 D：常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14. 附录 B：文件格式 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/appendices/appendixB.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. 附录 C：参数参考" href="appendixC.html" />
+    <link rel="prev" title="13. 附录 A：键盘快捷键" href="appendixA.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4.html">8. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">14. 附录 B：文件格式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">14.1. 📂 工程文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rmtproj">14.1.1. .rmtproj（工程文件）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">14.2. 📊 数据文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sbf-station-binary-format">14.2.1. SBF（Station Binary Format）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edi-electrical-data-interchange">14.2.2. EDI（Electrical Data Interchange）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv">14.2.3. CSV（逗号分隔值）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#txt">14.2.4. TXT（文本格式）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">14.3. ⚙️ 配置文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fft-json">14.3.1. FFT 参数文件 (.json)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cal">14.3.2. 校准文件 (.cal)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">14.4. 📦 导出目录结构</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendixC.html">15. 附录 C：参数参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixD.html">16. 附录 D：常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/contributing.html">20. 贡献指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14. </span>附录 B：文件格式</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/appendices/appendixB.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="b">
+<h1><span class="section-number">14. </span>附录 B：文件格式<a class="headerlink" href="#b" title="Link to this heading"></a></h1>
+<p>本附录详细介绍 RMTDataPro 支持的文件格式。</p>
+<section id="id1">
+<h2><span class="section-number">14.1. </span>📂 工程文件<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="rmtproj">
+<h3><span class="section-number">14.1.1. </span>.rmtproj（工程文件）<a class="headerlink" href="#rmtproj" title="Link to this heading"></a></h3>
+<p>RMTDataPro 工程文件格式，基于 JSON 存储。</p>
+<p><strong>文件结构</strong>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;projectName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;示例工程&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-30T10:00:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-30T15:30:00&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;lines&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;测线1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sites&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S001&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;sbffiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;path/to/file1.sbf&quot;</span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;processed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;fftParamFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default_fft.json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">14.2. </span>📊 数据文件<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="sbf-station-binary-format">
+<h3><span class="section-number">14.2.1. </span>SBF（Station Binary Format）<a class="headerlink" href="#sbf-station-binary-format" title="Link to this heading"></a></h3>
+<p>RMT 测站二进制数据格式。</p>
+<p><strong>文件结构</strong>:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>段类型</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>大小（典型）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Header</p></td>
+<td><p>文件头</p></td>
+<td><p>64 bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Text</p></td>
+<td><p>文本信息</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-even"><td><p>Ini</p></td>
+<td><p>初始化参数</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trass</p></td>
+<td><p>时间序列</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-even"><td><p>Spectrum</p></td>
+<td><p>频谱数据</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device Parameter</p></td>
+<td><p>设备参数</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-even"><td><p>Registrar Parameter</p></td>
+<td><p>注册参数</p></td>
+<td><p>可变</p></td>
+</tr>
+<tr class="row-odd"><td><p>CheckSum</p></td>
+<td><p>校验和</p></td>
+<td><p>4 bytes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edi-electrical-data-interchange">
+<h3><span class="section-number">14.2.2. </span>EDI（Electrical Data Interchange）<a class="headerlink" href="#edi-electrical-data-interchange" title="Link to this heading"></a></h3>
+<p>MT 数据标准交换格式。</p>
+<p><strong>文件示例</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt;=HEAD
+  FILENAME=&quot;station001.edi&quot;
+  ACQBY=&quot;Operator&quot;
+  DATE=&quot;2026-03-30&quot;
+  PROJ=&quot;RMT Survey&quot;
+  LOC=&quot;Study Area&quot;
+  LAT=40.0
+  LON=120.0
+  ELEV=100.0
+  SIGNAL=&quot;RMT&quot;
+  UNITS=&quot;SI&quot;
+&gt;MT DATA
+&gt;Z rot=0
+  100.0  45.2  -15.3  72.1  12.3  -85.2  35.6  158.4
+  200.0  48.5  -12.8  68.4  15.1  -82.1  38.2  155.3
+&gt;END
+</pre></div>
+</div>
+<p><strong>数据说明</strong>:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>频率 (Hz)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2-3</p></td>
+<td><p>Zxx (实部, 虚部)</p></td>
+</tr>
+<tr class="row-even"><td><p>4-5</p></td>
+<td><p>Zxy (实部, 虚部)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-7</p></td>
+<td><p>Zyx (实部, 虚部)</p></td>
+</tr>
+<tr class="row-even"><td><p>8-9</p></td>
+<td><p>Zyy (实部, 虚部)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="csv">
+<h3><span class="section-number">14.2.3. </span>CSV（逗号分隔值）<a class="headerlink" href="#csv" title="Link to this heading"></a></h3>
+<p>文本表格格式，便于 Excel 等软件处理。</p>
+<p><strong>文件格式</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Frequency,Rho_xx,Phi_xx,Rho_xy,Phi_xy,Rho_yx,Phi_yx,Rho_yy,Phi_yy
+100.0,10.5,-15.3,45.2,72.1,12.3,-85.2,35.6,158.4
+200.0,12.3,-12.8,48.5,68.4,15.1,-82.1,38.2,155.3
+</pre></div>
+</div>
+</section>
+<section id="txt">
+<h3><span class="section-number">14.2.4. </span>TXT（文本格式）<a class="headerlink" href="#txt" title="Link to this heading"></a></h3>
+<p>每行一条记录，空格分隔。</p>
+<p><strong>文件格式</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>频率(Hz)  ρxx(Ω·m)  φxx(°)  ρxy(Ω·m)  φxy(°)  ρyx(Ω·m)  φyx(°)  ρyy(Ω·m)  φyy(°)
+100.0     10.5      -15.3    45.2       72.1     12.3       -85.2    35.6       158.4
+200.0     12.3      -12.8    48.5       68.4     15.1       -82.1    38.2       155.3
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">14.3. </span>⚙️ 配置文件<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="fft-json">
+<h3><span class="section-number">14.3.1. </span>FFT 参数文件 (.json)<a class="headerlink" href="#fft-json" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;windowLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;overlap&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;windowMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Multiple&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeBandwidthProduct&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;numWindows&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;impedanceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tensor&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;averageType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WeightedMean&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;targetFrequencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;39000.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;312000.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="cal">
+<h3><span class="section-number">14.3.2. </span>校准文件 (.cal)<a class="headerlink" href="#cal" title="Link to this heading"></a></h3>
+<p>二进制或文本格式，包含系统响应校准数据。</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">14.4. </span>📦 导出目录结构<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>批量导出时，自动创建以下目录结构：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>输出目录/
+├── 测线1/
+│   ├── S001.edi
+│   ├── S001.csv
+│   ├── S002.edi
+│   └── S002.csv
+├── 测线2/
+│   ├── S003.edi
+│   └── S003.csv
+└── export_log.txt
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>返回</strong>: <a class="reference internal" href="../index.html"><span class="doc std std-doc">附录索引</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="appendixA.html" class="btn btn-neutral float-left" title="13. 附录 A：键盘快捷键" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appendixC.html" class="btn btn-neutral float-right" title="15. 附录 C：参数参考" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

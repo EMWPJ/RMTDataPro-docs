@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20. 贡献指南 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/appendix/contributing.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="19. 附录 G：校准理论" href="../appendices/appendix_calibration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4.html">8. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixB.html">14. 附录 B：文件格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixC.html">15. 附录 C：参数参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixD.html">16. 附录 D：常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">20. 贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">20.1. 🤝 贡献方式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">20.1.1. 1. 文档纠错</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">20.1.2. 2. 内容完善</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">20.1.3. 3. 翻译贡献</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">20.2. 📝 提交流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fork">20.2.1. 1. Fork 仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">20.2.2. 2. 克隆本地</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">20.2.3. 3. 创建分支</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">20.2.4. 4. 修改文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">20.2.5. 5. 提交更改</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pull-request">20.2.6. 6. 创建 Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">20.3. 📋 编写规范</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">20.3.1. 文件命名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">20.3.2. 标题层级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">20.3.3. 中文排版</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">20.3.4. 代码块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">20.3.5. 表格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">20.3.6. 图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">20.4. ✅ 检查清单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">20.5. 🧪 本地测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">20.6. 📧 联系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">20.7. 📄 许可证</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">20. </span>贡献指南</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/appendix/contributing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">20. </span>贡献指南<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>感谢您对 RMTDataPro 文档的贡献！本文档介绍如何参与文档改进。</p>
+<section id="id2">
+<h2><span class="section-number">20.1. </span>🤝 贡献方式<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">20.1.1. </span>1. 文档纠错<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>发现文档中的错误时，欢迎提交纠正：</p>
+<ul class="simple">
+<li><p>拼写错误</p></li>
+<li><p>事实错误</p></li>
+<li><p>表述不清</p></li>
+<li><p>代码示例错误</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">20.1.2. </span>2. 内容完善<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>补充或扩展现有内容：</p>
+<ul class="simple">
+<li><p>添加遗漏的步骤</p></li>
+<li><p>补充更多示例</p></li>
+<li><p>完善参数说明</p></li>
+<li><p>丰富故障排除指南</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">20.1.3. </span>3. 翻译贡献<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>帮助翻译文档到其他语言：</p>
+<ul class="simple">
+<li><p>英文翻译</p></li>
+<li><p>其他语言翻译</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">20.2. </span>📝 提交流程<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="fork">
+<h3><span class="section-number">20.2.1. </span>1. Fork 仓库<a class="headerlink" href="#fork" title="Link to this heading"></a></h3>
+<p>访问 <a class="reference external" href="https://github.com/EMWPJ/RMTDataPro-docs">RMTDataPro 文档仓库</a>，点击 Fork 按钮。</p>
+</section>
+<section id="id7">
+<h3><span class="section-number">20.2.2. </span>2. 克隆本地<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/你的用户名/RMTDataPro-docs.git
+<span class="nb">cd</span><span class="w"> </span>RMTDataPro-docs
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">20.2.3. </span>3. 创建分支<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>docs/你的修改内容
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">20.2.4. </span>4. 修改文档<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>使用 Markdown 编辑器修改 <code class="docutils literal notranslate"><span class="pre">.md</span></code> 文件。</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">20.2.5. </span>5. 提交更改<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: 简要描述你的修改&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>docs/你的修改内容
+</pre></div>
+</div>
+</section>
+<section id="pull-request">
+<h3><span class="section-number">20.2.6. </span>6. 创建 Pull Request<a class="headerlink" href="#pull-request" title="Link to this heading"></a></h3>
+<p>在 GitHub 上创建 PR，描述你的修改内容和原因。</p>
+</section>
+</section>
+<section id="id11">
+<h2><span class="section-number">20.3. </span>📋 编写规范<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<section id="id12">
+<h3><span class="section-number">20.3.1. </span>文件命名<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>使用小写字母和连字符</p></li>
+<li><p>示例: <code class="docutils literal notranslate"><span class="pre">new-feature.md</span></code>, <code class="docutils literal notranslate"><span class="pre">quick-start.md</span></code></p></li>
+</ul>
+</section>
+<section id="id13">
+<h3><span class="section-number">20.3.2. </span>标题层级<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># 一级标题（页面标题，只有一个）</span>
+<span class="gu">## 二级标题（章节）</span>
+<span class="gu">### 三级标题（子章节）</span>
+<span class="gu">#### 四级标题（较少使用）</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3><span class="section-number">20.3.3. </span>中文排版<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>中文与英文/数字之间加空格</p></li>
+<li><p>正确: <code class="docutils literal notranslate"><span class="pre">RMTDataPro</span> <span class="pre">v0.1.0</span></code></p></li>
+<li><p>错误: <code class="docutils literal notranslate"><span class="pre">RMTDataProv0.1.0</span></code></p></li>
+<li><p>使用中文标点符号</p></li>
+<li><p>专有名词使用官方翻译</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3><span class="section-number">20.3.4. </span>代码块<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```语言</span>
+<span class="s">代码内容</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">20.3.5. </span>表格<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p>使用 Markdown 表格，保持列对齐。</p>
+</section>
+<section id="id17">
+<h3><span class="section-number">20.3.6. </span>图片<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>图片放在 <code class="docutils literal notranslate"><span class="pre">source/_static/images/</span></code> 目录</p></li>
+<li><p>使用相对路径引用</p></li>
+<li><p>添加 alt 文本描述</p></li>
+</ul>
+</section>
+</section>
+<section id="id18">
+<h2><span class="section-number">20.4. </span>✅ 检查清单<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<p>提交前请确认：</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 内容准确无误</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 格式符合规范</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 链接有效</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 无错别字</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 测试文档构建</p></li>
+</ul>
+</section>
+<section id="id19">
+<h2><span class="section-number">20.5. </span>🧪 本地测试<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<p>构建文档并检查：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span><span class="nb">source</span><span class="w"> </span>_build/html
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h2><span class="section-number">20.6. </span>📧 联系<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>如有 questions，请联系维护者或提交 Issue。</p>
+</section>
+<section id="id21">
+<h2><span class="section-number">20.7. </span>📄 许可证<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<p>贡献的内容将采用与项目相同的许可证发布。</p>
+<hr class="docutils" />
+<p><strong>返回</strong>: <a class="reference internal" href="../index.html"><span class="doc std std-doc">文档索引</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../appendices/appendix_calibration.html" class="btn btn-neutral float-left" title="19. 附录 G：校准理论" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

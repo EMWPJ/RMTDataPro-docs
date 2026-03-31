@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16. 附录 D：常见问题 &mdash; RMTDataPro 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://emwpj.github.io/RMTDataPro-docs/appendices/appendixD.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17. 附录 E：故障排除" href="appendixE.html" />
+    <link rel="prev" title="15. 附录 C：参数参考" href="appendixC.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RMTDataPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">1. 软件简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">2. 安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/quickstart.html">3. 快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter1.html">4. 软件概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter2.html">5. SBF 数据格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter_rmt_theory.html">6. RMT 原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter3.html">7. FFT 处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4.html">8. 数据处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5.html">9. 批量导出与工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">10. 实例展示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">11. 进阶教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/plotting.html">12. Python 绘图教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixA.html">13. 附录 A：键盘快捷键</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixB.html">14. 附录 B：文件格式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixC.html">15. 附录 C：参数参考</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. 附录 D：常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">16.1. 📋 通用问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#q1">16.1.1. Q1: 软件启动失败怎么办？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q2">16.1.2. Q2: 工程文件无法打开？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q3">16.1.3. Q3: 处理速度很慢？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">16.2. 📂 数据问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#q4-sbf">16.2.1. Q4: SBF 文件加载失败？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q5">16.2.2. Q5: 某些频段数据缺失？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q6">16.2.3. Q6: 处理结果异常（曲线抖动）？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">16.3. ⚙️ 参数问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#q7-fft">16.3.1. Q7: FFT 参数如何选择？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q8">16.3.2. Q8: 张量阻抗和标量阻抗如何选择？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">16.4. 📤 导出问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#q9-edi">16.4.1. Q9: EDI 导出格式不被识别？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q10">16.4.2. Q10: 批量导出失败？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">16.5. 🌐 语言问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#q11">16.5.1. Q11: 界面语言无法切换？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendixE.html">17. 附录 E：故障排除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendixF.html">18. 附录 F：术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix_calibration.html">19. 附录 G：校准理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/contributing.html">20. 贡献指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RMTDataPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">16. </span>附录 D：常见问题</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/appendices/appendixD.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="d">
+<h1><span class="section-number">16. </span>附录 D：常见问题<a class="headerlink" href="#d" title="Link to this heading"></a></h1>
+<p>本文档解答 RMTDataPro 使用中的常见问题。</p>
+<section id="id1">
+<h2><span class="section-number">16.1. </span>📋 通用问题<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="q1">
+<h3><span class="section-number">16.1.1. </span>Q1: 软件启动失败怎么办？<a class="headerlink" href="#q1" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 检查以下可能原因：</p>
+<ol class="arabic simple">
+<li><p><strong>缺少 Visual C++ 运行库</strong></p>
+<ul class="simple">
+<li><p>下载并安装 <a class="reference external" href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist">Visual Studio 2022 Redistributable</a></p></li>
+</ul>
+</li>
+<li><p><strong>Qt 插件加载失败</strong></p>
+<ul class="simple">
+<li><p>确认 Qt 环境变量正确设置</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">-Deploy</span></code> 参数重新部署 Qt 依赖</p></li>
+</ul>
+</li>
+<li><p><strong>显卡驱动过旧</strong></p>
+<ul class="simple">
+<li><p>更新显卡驱动到最新版本</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="q2">
+<h3><span class="section-number">16.1.2. </span>Q2: 工程文件无法打开？<a class="headerlink" href="#q2" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 可能原因及解决方法：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>原因</p></th>
+<th class="head"><p>解决方法</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>文件损坏</p></td>
+<td><p>从备份恢复</p></td>
+</tr>
+<tr class="row-odd"><td><p>版本不兼容</p></td>
+<td><p>更新软件到最新版本</p></td>
+</tr>
+<tr class="row-even"><td><p>路径包含中文/特殊字符</p></td>
+<td><p>移动到纯ASCII路径</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="q3">
+<h3><span class="section-number">16.1.3. </span>Q3: 处理速度很慢？<a class="headerlink" href="#q3" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 优化建议：</p>
+<ol class="arabic simple">
+<li><p><strong>增加窗口重叠率</strong> - 减少处理窗口数</p></li>
+<li><p><strong>减小窗口长度</strong> - 降低频率分辨率</p></li>
+<li><p><strong>关闭详细日志</strong> - 减少IO开销</p></li>
+<li><p><strong>使用 SSD</strong> - 提升数据读写速度</p></li>
+</ol>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">16.2. </span>📂 数据问题<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="q4-sbf">
+<h3><span class="section-number">16.2.1. </span>Q4: SBF 文件加载失败？<a class="headerlink" href="#q4-sbf" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 检查以下内容：</p>
+<ol class="arabic simple">
+<li><p><strong>文件格式</strong>: 确认是 SBF 格式（非 AGE/SEG-D）</p></li>
+<li><p><strong>文件完整性</strong>: 尝试重新下载或复制文件</p></li>
+<li><p><strong>版本兼容</strong>: 部分旧版 SBF 可能不兼容</p></li>
+</ol>
+</section>
+<section id="q5">
+<h3><span class="section-number">16.2.2. </span>Q5: 某些频段数据缺失？<a class="headerlink" href="#q5" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 可能原因：</p>
+<ul class="simple">
+<li><p>该频段在采集时未启用</p></li>
+<li><p>采集设备不支持该频段</p></li>
+<li><p>数据损坏导致解析失败</p></li>
+</ul>
+</section>
+<section id="q6">
+<h3><span class="section-number">16.2.3. </span>Q6: 处理结果异常（曲线抖动）？<a class="headerlink" href="#q6" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 数据质量问题：</p>
+<ol class="arabic simple">
+<li><p><strong>信噪比低</strong>: 延长采集时间</p></li>
+<li><p><strong>人文干扰</strong>: 远离电力线、建筑物</p></li>
+<li><p><strong>设备问题</strong>: 检查校准状态</p></li>
+</ol>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">16.3. </span>⚙️ 参数问题<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="q7-fft">
+<h3><span class="section-number">16.3.1. </span>Q7: FFT 参数如何选择？<a class="headerlink" href="#q7-fft" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 参考建议：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>应用场景</p></th>
+<th class="head"><p>窗口长度</p></th>
+<th class="head"><p>重叠率</p></th>
+<th class="head"><p>窗口模式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>快速浏览</p></td>
+<td><p>256</p></td>
+<td><p>0.5</p></td>
+<td><p>单窗口</p></td>
+</tr>
+<tr class="row-odd"><td><p>标准处理</p></td>
+<td><p>512</p></td>
+<td><p>0.5-0.75</p></td>
+<td><p>多窗口</p></td>
+</tr>
+<tr class="row-even"><td><p>高精度</p></td>
+<td><p>1024</p></td>
+<td><p>0.75</p></td>
+<td><p>多窗口</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="q8">
+<h3><span class="section-number">16.3.2. </span>Q8: 张量阻抗和标量阻抗如何选择？<a class="headerlink" href="#q8" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 选择建议：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>类型</p></th>
+<th class="head"><p>适用场景</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>张量阻抗</p></td>
+<td><p>三维结构、极化分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>标量阻抗</p></td>
+<td><p>一维/二维结构、噪声较大数据</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">16.4. </span>📤 导出问题<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="q9-edi">
+<h3><span class="section-number">16.4.1. </span>Q9: EDI 导出格式不被识别？<a class="headerlink" href="#q9-edi" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 检查 EDI 文件格式：</p>
+<ul class="simple">
+<li><p>确保包含 <code class="docutils literal notranslate"><span class="pre">&gt;HEAD</span></code> 和 <code class="docutils literal notranslate"><span class="pre">&gt;MT</span> <span class="pre">DATA</span></code> 标记</p></li>
+<li><p>确保 <code class="docutils literal notranslate"><span class="pre">&gt;END</span></code> 标记存在</p></li>
+<li><p>确认频率值为正数</p></li>
+</ul>
+</section>
+<section id="q10">
+<h3><span class="section-number">16.4.2. </span>Q10: 批量导出失败？<a class="headerlink" href="#q10" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 可能原因：</p>
+<ol class="arabic simple">
+<li><p><strong>输出目录不存在或无写入权限</strong></p>
+<ul class="simple">
+<li><p>创建目录或更换输出路径</p></li>
+</ul>
+</li>
+<li><p><strong>文件名冲突</strong></p>
+<ul class="simple">
+<li><p>启用”覆盖”选项</p></li>
+</ul>
+</li>
+<li><p><strong>磁盘空间不足</strong></p>
+<ul class="simple">
+<li><p>清理磁盘空间</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">16.5. </span>🌐 语言问题<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="q11">
+<h3><span class="section-number">16.5.1. </span>Q11: 界面语言无法切换？<a class="headerlink" href="#q11" title="Link to this heading"></a></h3>
+<p><strong>A:</strong> 解决方法：</p>
+<ol class="arabic simple">
+<li><p>确认翻译文件存在：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RMTDataPro_zh_CN.qm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RMTDataPro_en_US.qm</span></code></p></li>
+</ul>
+</li>
+<li><p>重启软件使语言切换生效</p></li>
+<li><p>检查系统区域设置</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>返回</strong>: <a class="reference internal" href="../index.html"><span class="doc std std-doc">附录索引</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="appendixC.html" class="btn btn-neutral float-left" title="15. 附录 C：参数参考" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appendixE.html" class="btn btn-neutral float-right" title="17. 附录 E：故障排除" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Wang Peijie.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
