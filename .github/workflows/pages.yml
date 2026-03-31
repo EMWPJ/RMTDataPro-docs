@@ -62,8 +62,7 @@ jobs:
         with:
           texlive_version: '2025'
           scheme: 'full'
-          run: |
-            tlmgr install latexmk xeCJK ctex fontspec
+          # Full scheme already includes latexmk, xeCJK, fontspec, ctex - no need to install
 
       - name: Build PDF
         run: |
